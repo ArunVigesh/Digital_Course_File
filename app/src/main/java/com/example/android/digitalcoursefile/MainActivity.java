@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.e("ER",new String(responseBody));
                             JSONObject jsonObject = new JSONObject(new  String(responseBody));
                             JSONArray jsonArray = jsonObject.getJSONArray("getlist");
+                            Log.e("Size", "JSON Array: "+jsonArray.length());
                             if(jsonArray.length()==0)
                                 Toast.makeText( getApplicationContext(), "Invalid Credentials ", Toast.LENGTH_SHORT ).show();
                             for (int i = 0; i < jsonArray.length(); i++) {
