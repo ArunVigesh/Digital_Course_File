@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="256dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Update Password" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="256dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Update Email" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="256dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="Update Phone Number" />
+</LinearLayout>
