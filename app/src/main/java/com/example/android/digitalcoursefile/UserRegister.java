@@ -49,17 +49,17 @@ public class UserRegister extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Logging in...");
+                progressDialog.setMessage("Registering...");
                 progressDialog.show();
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
-                params.add( "firstName", firstName.getText().toString() );
-                params.add( "lastName", lastName.getText().toString() );
-                params.add( "userName", userName.getText().toString() );
-                params.add( "department", department.getText().toString() );
-                params.add( "email", email.getText().toString() );
-                params.add( "phone", phone.getText().toString() );
-                params.add( "password", password.getText().toString() );
+                params.add( "firstName", firstName.getText().toString().trim() );
+                params.add( "lastName", lastName.getText().toString().trim() );
+                params.add( "userName", userName.getText().toString().trim() );
+                params.add( "department", department.getText().toString().trim() );
+                params.add( "email", email.getText().toString().trim() );
+                params.add( "phone", phone.getText().toString().trim() );
+                params.add( "password", password.getText().toString().trim() );
                 client.post( "https://dcfse.000webhostapp.com/userRegistration.php", params, new AsyncHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
