@@ -24,10 +24,10 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
     private List<userApproval> dataList;
     private Context context;
     String approval;
-
+    Button approve,reject;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView firstName,lastName,userName,email,phone,department;
-        Button approve,reject;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             context=itemView.getContext();
@@ -53,7 +53,6 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
 
         return new MyViewHolder(itemView);
     }
-
     @Override
     public void onBindViewHolder(@NonNull UserApprovalAdapter.MyViewHolder holder, int position) {
         final userApproval u=dataList.get(position);
@@ -63,19 +62,21 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
         holder.department.setText("Department  : "+u.getDepartment());
         holder.email.setText("Email : "+u.getEmail());
         holder.phone.setText("Phone  : "+u.getPhone());
-        holder.approve.setOnClickListener(new View.OnClickListener() {
+        approve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 approval="1";
-                params.add("username",u.getUserName().trim());
+                params.add("username",u.getUserName());
                 params.add("approval",approval.trim());
                 client.post("https://dcfse.000webhostapp.com/approvalUpdate.php", params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         Log.e("ER", new String(responseBody));
                         Toast.makeText(context.getApplicationContext(), "User Approved", Toast.LENGTH_SHORT).show();
+
+
                     }
 
                     @Override
@@ -83,15 +84,16 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
 
                     }
                 });
+
             }
         });
-        holder.reject.setOnClickListener(new View.OnClickListener() {
+        reject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 approval="2";
-                params.add("username",u.getUserName().trim());
+                params.add("username",u.getUserName());
                 params.add("approval",approval.trim());
                 client.post("https://dcfse.000webhostapp.com/approvalUpdate.php", params, new AsyncHttpResponseHandler() {
                     @Override
