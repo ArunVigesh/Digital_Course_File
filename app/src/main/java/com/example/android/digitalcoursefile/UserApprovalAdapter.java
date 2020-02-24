@@ -23,6 +23,8 @@ import cz.msebera.android.httpclient.Header;
 public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapter.MyViewHolder> {
     private List<userApproval> dataList;
     private Context context;
+    String approval;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView firstName,lastName,userName,email,phone,department;
         Button approve,reject;
@@ -66,8 +68,9 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
             public void onClick(View v) {
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
-                params.add("username",u.getUserName());
-                params.add("approval","1");
+                approval="1";
+                params.add("username",u.getUserName().trim());
+                params.add("approval",approval.trim());
                 client.post("https://dcfse.000webhostapp.com/approvalUpdate.php", params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -87,8 +90,9 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
             public void onClick(View v) {
                 AsyncHttpClient client = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
-                params.add("username",u.getUserName());
-                params.add("approval","2");
+                approval="2";
+                params.add("username",u.getUserName().trim());
+                params.add("approval",approval.trim());
                 client.post("https://dcfse.000webhostapp.com/approvalUpdate.php", params, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

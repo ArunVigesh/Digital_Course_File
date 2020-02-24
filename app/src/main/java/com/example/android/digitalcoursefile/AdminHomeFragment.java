@@ -1,6 +1,5 @@
 package com.example.android.digitalcoursefile;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +26,7 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class AdminHomeFragment extends Fragment {
-    ArrayList dataList = new ArrayList<userApproval>();
+    ArrayList<userApproval> dataList = new ArrayList<userApproval>();
     View view;
     UserApprovalAdapter mAdapter;
     RecyclerView approval;
@@ -66,11 +65,13 @@ public class AdminHomeFragment extends Fragment {
                         dataList.add(u);
                     }
                     mAdapter = new UserApprovalAdapter(dataList);
-                    approval.setLayoutManager(new LinearLayoutManager(getContext()));
-                    approval.setHasFixedSize(true);
-                    approval.setItemAnimator(new DefaultItemAnimator());
+                    LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+                    mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                    approval.setLayoutManager(mLayoutManager);
                     approval.setAdapter(mAdapter);
+                    approval.setItemAnimator(new DefaultItemAnimator());
                     mAdapter.notifyDataSetChanged();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
