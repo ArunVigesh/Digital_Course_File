@@ -27,7 +27,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="UserName" />
+        android:hint="UserName"
+        android:text="admin"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -40,7 +41,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password"/>
+        android:hint="Password"
+        android:text="admin"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

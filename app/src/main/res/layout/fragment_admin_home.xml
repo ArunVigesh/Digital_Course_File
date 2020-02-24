@@ -14,4 +14,20 @@
         android:layout_margin="8dp"
         app:srcCompat="@drawable/home"
         tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:text="User Approval" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userApproval"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 </LinearLayout>
