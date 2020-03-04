@@ -26,7 +26,6 @@
         <activity android:name=".UpdatePhone" />
         <activity android:name=".EmailUpdate" />
         <activity android:name=".PasswordUpdate" />
-        <activity android:name=".TrackCourseRegistration" />
         <activity android:name=".ViewRegisteredCourse" />
         <activity android:name=".CourseRegistration" />
         <activity android:name=".fileUpload" />

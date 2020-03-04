@@ -11,13 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FilesFragment extends Fragment {
-    Button Upload;
     View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.fragment_files, container, false);
-        Upload = view.findViewById(R.id.button3);
+        Button Upload = view.findViewById(R.id.button3);
+        Button ViewFiles=view.findViewById(R.id.button4);
         Upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,6 +25,14 @@ public class FilesFragment extends Fragment {
                 startActivity(i);
             }
         });
+        ViewFiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getContext(),ViewFilesUser.class);
+                startActivity(i);
+            }
+        });
+
         return view;
     }
 }
