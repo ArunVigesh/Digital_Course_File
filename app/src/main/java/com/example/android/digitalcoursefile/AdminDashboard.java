@@ -35,8 +35,6 @@ public class AdminDashboard extends AppCompatActivity {
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.admin_drawer_layout);
         NavigationView navigationView = findViewById(R.id.admin_nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_admin_home, R.id.nav_admin_courses, R.id.nav_admin_feedback,
                 R.id.nav_admin_files, R.id.nav_admin_personal)

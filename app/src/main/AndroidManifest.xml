@@ -14,7 +14,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".UserApprovalAdapter"></activity>
+        <activity android:name=".DeleteFeedback"></activity>
+        <activity android:name=".ViewFeedbackUser" />
+        <activity android:name=".ProvideFeedback" />
+        <activity android:name=".ViewFilesUser" />
+        <activity android:name=".TrackRegistration" />
+        <activity android:name=".AllFeedback" />
+        <activity android:name=".ViewAllFiles" />
+        <activity android:name=".ApproveCourses" />
+        <activity android:name=".ManageCourses" />
+        <activity android:name=".UpdatePhone" />
+        <activity android:name=".EmailUpdate" />
+        <activity android:name=".PasswordUpdate" />
+        <activity android:name=".TrackCourseRegistration" />
+        <activity android:name=".ViewRegisteredCourse" />
+        <activity android:name=".CourseRegistration" />
+        <activity android:name=".fileUpload" />
+        <activity android:name=".UserApprovalAdapter" />
         <activity
             android:name=".AdminDashboard"
             android:label="@string/title_activity_admin_dashboard"
