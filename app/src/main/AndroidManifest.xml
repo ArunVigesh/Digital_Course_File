@@ -14,21 +14,84 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DeleteFeedback"></activity>
-        <activity android:name=".ViewFeedbackUser" />
-        <activity android:name=".ProvideFeedback" />
-        <activity android:name=".ViewFilesUser" />
-        <activity android:name=".TrackRegistration" />
-        <activity android:name=".AllFeedback" />
-        <activity android:name=".ViewAllFiles" />
-        <activity android:name=".ApproveCourses" />
-        <activity android:name=".ManageCourses" />
-        <activity android:name=".UpdatePhone" />
-        <activity android:name=".EmailUpdate" />
-        <activity android:name=".PasswordUpdate" />
-        <activity android:name=".ViewRegisteredCourse" />
-        <activity android:name=".CourseRegistration" />
-        <activity android:name=".fileUpload" />
+        <activity android:name=".viewUserFeedAdapter"></activity>
+        <activity android:name=".trackRegistrationAdapter" />
+        <activity android:name=".RegisteredCourse" />
+        <activity android:name=".DeleteFeedback">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.DeleteFeedback" />
+        </activity>
+        <activity android:name=".ViewFeedbackUser">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.ViewFeedbackUser" />
+        </activity>
+        <activity android:name=".ProvideFeedback">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.ProvideFeedback" />
+        </activity>
+        <activity android:name=".ViewFilesUser">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.ViewFilesUser" />
+        </activity>
+        <activity android:name=".TrackRegistration">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.TrackRegistration" />
+        </activity>
+        <activity android:name=".AllFeedback">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.AllFeedback" />
+        </activity>
+        <activity android:name=".ViewAllFiles">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.ViewAllFiles" />
+        </activity>
+        <activity android:name=".ApproveCourses">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.ApproveCourses" />
+        </activity>
+        <activity android:name=".ManageCourses">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.ManageCourses" />
+        </activity>
+        <activity android:name=".UpdatePhone">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.UpdatePhone" />
+        </activity>
+        <activity android:name=".EmailUpdate">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.EmailUpdate" />
+        </activity>
+        <activity android:name=".PasswordUpdate">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.PasswordUpdate" />
+        </activity>
+        <activity android:name=".ViewRegisteredCourse">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.ViewRegisteredCourse" />
+        </activity>
+        <activity android:name=".CourseRegistration">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.CourseRegistration" />
+        </activity>
+        <activity android:name=".fileUpload">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.digitalcoursefile.fileUpload" />
+        </activity>
         <activity android:name=".UserApprovalAdapter" />
         <activity
             android:name=".AdminDashboard"

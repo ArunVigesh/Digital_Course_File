@@ -5,15 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProvideFeedback"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView32"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_margin="8dp"
         android:textSize="32sp"
         android:gravity="center"
         android:text="Provide Feedback" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textSize="16sp"
+        android:text="Course ID " />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/editText12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="8dp"
+        android:gravity="start|top"
+        android:hint="Feedback"
+        android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button29"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
 </LinearLayout>

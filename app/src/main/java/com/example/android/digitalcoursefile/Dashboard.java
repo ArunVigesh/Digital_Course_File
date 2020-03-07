@@ -35,8 +35,6 @@ private DrawerLayout drawer;
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_files, R.id.nav_courses,
                 R.id.nav_feedback, R.id.nav_personal)

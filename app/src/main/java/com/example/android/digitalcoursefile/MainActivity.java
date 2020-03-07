@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                                 username.getText().clear();
                                 password.getText().clear();
                             }
-                            else
+                            else if(username.getText().toString().trim().equals(USERNAME))
                             {
                                 Intent i=new Intent(MainActivity.this,Dashboard.class);
                                 startActivity(i);
@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        progressDialog.dismiss();
                         Toast.makeText( getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT ).show();
                     }
                 });

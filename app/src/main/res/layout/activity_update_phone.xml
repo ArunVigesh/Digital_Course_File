@@ -17,19 +17,6 @@
         android:gravity="center"
         android:textSize="32sp"/>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <EditText
-        android:id="@+id/editText18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_margin="8dp"
-        android:hint="Old Phone"
-        android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -53,7 +40,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_margin="8dp"
-        android:hint="Confirm Password"
+        android:hint="Confirm Phone"
         android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button27"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
 </LinearLayout>

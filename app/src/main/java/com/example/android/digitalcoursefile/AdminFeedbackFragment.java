@@ -17,8 +17,14 @@ public class AdminFeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.fragment_admin_feedback, container, false);
         Button feedback=view.findViewById(R.id.button15);
-        Intent i =new Intent(getContext(),AllFeedback.class);
-        startActivity(i);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(getContext(),AllFeedback.class);
+                startActivity(i);
+            }
+        });
+
         return view;
     }
 }
