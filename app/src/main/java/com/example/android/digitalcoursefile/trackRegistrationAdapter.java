@@ -49,11 +49,15 @@ public class trackRegistrationAdapter extends RecyclerView.Adapter<trackRegistra
         int app=tc.getApproval();
         if(app==0)
         {
-            holder.status.setText("Status : Not Approved");
+            holder.status.setText("Status : Pending");
         }
         else if(app==1)
         {
             holder.status.setText("Status : Approved");
+        }
+        else if(app==2)
+        {
+            holder.status.setText("Status : Rejected");
         }
 
     }
