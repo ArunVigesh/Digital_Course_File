@@ -1,6 +1,9 @@
 package com.example.android.digitalcoursefile;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,11 +16,20 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 import cz.msebera.android.httpclient.Header;
 
 public class ManageCourses extends AppCompatActivity {
     EditText courseId;
     EditText courseName;
+    ArrayList<course> dataList = new ArrayList<course>();
+    removeCourseAdapter mAdapter;
+    RecyclerView removeCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +61,44 @@ public class ManageCourses extends AppCompatActivity {
 
                 });
                 Toast.makeText(getApplicationContext(),"Added Course",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        removeCourse =findViewById(R.id.removeCourse);
+        AsyncHttpClient myClient = new AsyncHttpClient();
+        myClient.post("https://dcfse.000webhostapp.com/allCourses.php", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                Log.e("ER",new String(responseBody));
+                JSONObject jsonObject;
+                try {
+                    jsonObject = new JSONObject(new  String(responseBody));
+                    JSONArray jsonArray = jsonObject.getJSONArray("courselist");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonobject = jsonArray.getJSONObject(i);
+                        String courseName=jsonobject.getString("courseName");
+                        String courseID=jsonobject.getString("courseID");
+                        course f=new course();
+                        f.setCourseID(courseID);
+                        f.setCourseName(courseName);
+                        dataList.add(f);
+                    }
+                    mAdapter = new removeCourseAdapter(dataList);
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                    removeCourse.setLayoutManager(mLayoutManager);
+                    removeCourse.setItemAnimator(new DefaultItemAnimator());
+                    removeCourse.setAdapter(mAdapter);
+                    mAdapter.notifyDataSetChanged();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
             }
         });
 
