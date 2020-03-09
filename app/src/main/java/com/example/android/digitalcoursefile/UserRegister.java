@@ -61,22 +61,22 @@ public class UserRegister extends AppCompatActivity {
                 params.add( "phone", phone.getText().toString().trim() );
                 params.add( "password", password.getText().toString().trim() );
                 client.post( "https://dcfse.000webhostapp.com/userRegistration.php", params, new AsyncHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                try {
-                                    progressDialog.dismiss();
-                                    Log.e( "ER", new String( responseBody ) );
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        try {
+                            progressDialog.dismiss();
+                            Log.e( "ER", new String( responseBody ) );
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-                            }
+                    }
 
-                        });
+                });
                 Toast.makeText(getApplicationContext(),"Registration Successful... Wait for Approval",Toast.LENGTH_SHORT).show();
                 Intent i=new Intent(UserRegister.this,MainActivity.class);
                 startActivity(i);

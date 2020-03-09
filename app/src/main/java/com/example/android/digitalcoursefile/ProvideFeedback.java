@@ -45,7 +45,6 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
         submit=findViewById(R.id.button29);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        Log.e("TAG", "onCreate: "+USERNAME );
         params.add("username",USERNAME);
         client.post("https://dcfse.000webhostapp.com/getCoursesReg.php", params,new AsyncHttpResponseHandler() {
             @Override

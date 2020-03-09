@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ViewFilesUser extends AppCompatActivity {
+public class viewFilesAdapter extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_files_user);
-        
+        setContentView(R.layout.activity_view_files_adapter);
     }
 }
