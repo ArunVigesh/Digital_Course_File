@@ -1,14 +1,54 @@
 package com.example.android.digitalcoursefile;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class viewUserFeedAdapter extends AppCompatActivity {
+import java.util.List;
+
+public class viewUserFeedAdapter extends RecyclerView.Adapter<viewUserFeedAdapter.MyViewHolder> {
+
+    private List<viewFeed> dataList;
+    private Context context;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView courseID,feedback;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            context=itemView.getContext();
+            courseID=itemView.findViewById(R.id.textView40);
+            feedback=itemView.findViewById(R.id.textView41);
+
+        }
+    }
+    public viewUserFeedAdapter(List<viewFeed> dataList) {
+        this.dataList = dataList;
+    }
+    @NonNull
+    @Override
+    public viewUserFeedAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.activity_view_user_feed_adapter, parent, false);
+
+        return new MyViewHolder(itemView);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_user_feed_adapter);
+    public void onBindViewHolder(@NonNull viewUserFeedAdapter.MyViewHolder holder, int position) {
+        final viewFeed tc=dataList.get(position);
+        holder.feedback.setText("Feedback : "+tc.getFeedback());
+        holder.courseID.setText("Course ID : "+tc.getCourseID());
+    }
+
+    @Override
+    public int getItemCount() {
+        return dataList.size();
     }
 }

@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".viewUserFeedAdapter"></activity>
+        <activity android:name=".ViewAllFeed"></activity>
+        <activity android:name=".DeleteFeedAdapter" />
+        <activity android:name=".viewUserFeedAdapter" />
         <activity android:name=".trackRegistrationAdapter" />
         <activity android:name=".RegisteredCourse" />
         <activity android:name=".DeleteFeedback">

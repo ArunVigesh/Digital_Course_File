@@ -4,21 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".viewUserFeedAdapter"
-    android:orientation="vertical"
-    android:layout_margin="16dp">
+    tools:context=".DeleteFeedAdapter"
+    android:layout_margin="16dp"
+    android:orientation="vertical">
+
 
     <TextView
-        android:id="@+id/textView40"
+        android:id="@+id/textView42"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Course ID"
+        android:text="Course ID "
         android:layout_margin="8dp"/>
 
     <TextView
-        android:id="@+id/textView41"
+        android:id="@+id/textView43"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Course Feedback " />
+        android:text="Feedback "
+        android:layout_margin="8dp"/>
+
+    <Button
+        android:id="@+id/button30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_margin="8dp"/>
 </LinearLayout>
