@@ -1,15 +1,13 @@
 package com.example.android.digitalcoursefile;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
+
 import android.content.Intent;
-import android.database.Cursor;
+
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,11 +47,12 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
     private static final int PICK_FILE_REQUEST = 1;
     ProgressDialog dialog;
     String fileID;
+    String Extension;
     private static final String TAG = fileUpload.class.getSimpleName();
     private String selectedFilePath;
     private String SERVER_URL = "https://dcfse.000webhostapp.com/FilesUpload.php";
     String courseSelected,fileSelected;
-   ImageButton upload;
+    ImageButton upload;
     Button submit;
     EditText fname;
     Spinner spincourse,spinfiletype;
@@ -159,24 +158,26 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                 params.add( "courseID", courseSelected );
                 params.add( "fileName", fname.getText().toString().trim() );
                 params.add( "fileType", fileSelected );
-                params.add( "fileUrl", "https:/dcfse.000webhostapp.com/files/"+fileID );
+                if(fileID!=null) {
+                    params.add("fileUrl", "https:/dcfse.000webhostapp.com/files/" + fileID);
 
-                client.post( "https://dcfse.000webhostapp.com/UploadFileData.php", params, new AsyncHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        try {
-                            Log.e( "ER", new String( responseBody ) );
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                    client.post("https://dcfse.000webhostapp.com/UploadFileData.php", params, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            try {
+                                Log.e("ER", new String(responseBody));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-                    }
+                        }
 
-                });
+                    });
+                }
 
             } else {
                 Toast.makeText( fileUpload.this, "Select a File", Toast.LENGTH_SHORT ).show();
@@ -184,12 +185,12 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
         }
     }
+
     private void showFileChooser() {
 
-        Intent intent = new Intent();
-        intent.setType( "*/*" );
-        intent.setAction( Intent.ACTION_GET_CONTENT );
-        startActivityForResult( Intent.createChooser( intent, "Choose File to Upload.." ), PICK_FILE_REQUEST );
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        startActivityForResult(intent, PICK_FILE_REQUEST);
     }
 
     @Override
@@ -202,6 +203,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                 }
                 Uri selectedFileUri = data.getData();
                 selectedFilePath = FilePath.getPath( this, selectedFileUri );
+                Extension=selectedFilePath.substring(selectedFilePath.lastIndexOf("."));
                 Log.e( TAG, "Selected File Path : " + selectedFilePath );
 
                 if (selectedFilePath != null && !selectedFilePath.equals( "" )) {
@@ -244,7 +246,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
             return 0;
         } else {
             try {
-                fileID=USERNAME+"-"+courseSelected+"-"+fileSelected+"-"+fname.getText().toString().trim();
+                fileID=USERNAME+"-"+courseSelected+"-"+fileSelected+"-"+fname.getText().toString().trim()+Extension;
                 selectedFilePath = fileID;
                 FileInputStream fileInputStream = new FileInputStream(selectedFile);
                 URL url = new URL(SERVER_URL);
