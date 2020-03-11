@@ -15,7 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".viewFilesAdapter"></activity>
+        <activity android:name=".DeleteFileAdapter"></activity>
+        <activity android:name=".LogAdapter" />
+        <activity android:name=".AnnounceAdapter" />
+        <activity android:name=".SearchFile" />
+        <activity android:name=".DeleteFile" />
+        <activity android:name=".ActivityLog" />
+        <activity android:name=".viewFilesAdapter" />
         <activity android:name=".removeCourseAdapter" />
         <activity android:name=".CourseApprovalAdapter" />
         <activity android:name=".ViewAllFeed" />

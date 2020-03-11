@@ -22,6 +22,7 @@ public class viewFilesAdapter extends RecyclerView.Adapter<viewFilesAdapter.MyVi
     private List<fileData> dataList;
     private Context context;
     TextView fileUrl;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView courseID,fileName,fileType;
 
@@ -44,12 +45,13 @@ public class viewFilesAdapter extends RecyclerView.Adapter<viewFilesAdapter.MyVi
     public viewFilesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_view_files_adapter, parent, false);
-
         return new MyViewHolder(itemView);
+
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull viewFilesAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final viewFilesAdapter.MyViewHolder holder, final int position) {
         final fileData tc=dataList.get(position);
         holder.fileName.setText("File Name : "+tc.getFilename());
         holder.courseID.setText("Course ID : "+tc.getCourseID());
@@ -61,6 +63,7 @@ public class viewFilesAdapter extends RecyclerView.Adapter<viewFilesAdapter.MyVi
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(tc.getFileurl()));
                 context.startActivity(i);
+
             }
         });
 
@@ -72,5 +75,6 @@ public class viewFilesAdapter extends RecyclerView.Adapter<viewFilesAdapter.MyVi
     public int getItemCount() {
         return dataList.size();
     }
+
 
 }

@@ -19,4 +19,20 @@
         android:text="View Files"
         android:layout_margin="8dp"
         android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/button37"
+        android:layout_width="256dp"
+        android:layout_gravity="center"
+        android:layout_height="128dp"
+        android:layout_margin="8dp"
+        android:text="Delete File" />
+
+    <Button
+        android:id="@+id/button38"
+        android:layout_margin="8dp"
+        android:layout_width="256dp"
+        android:layout_gravity="center"
+        android:layout_height="128dp"
+        android:text="Search File" />
 </LinearLayout>

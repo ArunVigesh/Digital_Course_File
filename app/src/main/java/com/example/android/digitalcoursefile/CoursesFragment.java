@@ -19,6 +19,7 @@ public class CoursesFragment extends Fragment {
         Button Register=view.findViewById(R.id.button16);
         Button ViewReg=view.findViewById(R.id.button17);
         Button TrackReg=view.findViewById(R.id.button18);
+        Button actLog=view.findViewById(R.id.button34);
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,13 @@ public class CoursesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getContext(),TrackRegistration.class);
+                startActivity(i);
+            }
+        });
+        actLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getContext(),ActivityLog.class);
                 startActivity(i);
             }
         });

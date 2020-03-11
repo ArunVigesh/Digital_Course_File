@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -30,13 +32,15 @@ public class AdminHomeFragment extends Fragment {
     View view;
     UserApprovalAdapter mAdapter;
     RecyclerView approval;
-
+EditText announce;
+Button submit;
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_admin_home, container, false);
          approval= view.findViewById(R.id.userApproval);
-
+        announce=view.findViewById(R.id.editText23);
+        submit=view.findViewById(R.id.button36);
         AsyncHttpClient myClient = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         myClient.post("https://dcfse.000webhostapp.com/userApproval.php", params, new AsyncHttpResponseHandler() {
@@ -81,6 +85,31 @@ public class AdminHomeFragment extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AsyncHttpClient myClient = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
+                params.add("announce",announce.getText().toString().trim());
+                myClient.post("https://dcfse.000webhostapp.com/MakeAnnouncement.php", params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        try {
+                            announce.getText().clear();
+                            Log.e( "ER", new String( responseBody ) );
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                    }
+                });
             }
         });
         return view;

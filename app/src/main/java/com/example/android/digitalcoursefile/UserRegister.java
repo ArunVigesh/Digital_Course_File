@@ -64,12 +64,12 @@ public class UserRegister extends AppCompatActivity {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         try {
-                            progressDialog.dismiss();
-                            Log.e( "ER", new String( responseBody ) );
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        progressDialog.dismiss();
+                        Log.e( "ER", new String( responseBody ) );
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
+                }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
