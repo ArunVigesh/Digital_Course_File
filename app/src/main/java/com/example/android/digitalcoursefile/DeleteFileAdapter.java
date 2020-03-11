@@ -86,7 +86,7 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
                 AsyncHttpClient myclient = new AsyncHttpClient();
                 RequestParams paramsd = new RequestParams();
                 paramsd.add("file_path",tc.getFileurl());
-                myclient.post("https://dcfse.000webhostapp.com/deleteFile.php", paramsd, new AsyncHttpResponseHandler() {
+                myclient.post("https://dcfse.000webhostapp.com/deleteData.php", paramsd, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         Log.e("ER", new String(responseBody));
