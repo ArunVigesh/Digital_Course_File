@@ -45,6 +45,15 @@
         android:text="123456"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/textView80"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:textSize="20sp"
+        android:textColor="#ff0000"
+        android:text="Forgot Password ?" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TextView signup;
     Button signin;
     EditText username,password;
+    TextView forgotPass;
     public static String USERNAME;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(this);
         username=findViewById(R.id.editText);
+        forgotPass=findViewById(R.id.textView80);
         password=findViewById(R.id.editText2);
         signup=findViewById(R.id.textView3);
         signup.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+                }
+            });
+            forgotPass.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
                 }
             });

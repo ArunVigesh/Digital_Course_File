@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".DeleteFileAdapter"></activity>
+        <activity android:name=".forgotPassword"></activity>
+        <activity android:name=".AllFilesAdapter" />
+        <activity android:name=".DeleteFileAdapter" />
         <activity android:name=".LogAdapter" />
         <activity android:name=".AnnounceAdapter" />
         <activity android:name=".SearchFile" />
