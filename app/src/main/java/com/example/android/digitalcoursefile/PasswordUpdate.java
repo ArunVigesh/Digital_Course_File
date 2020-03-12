@@ -21,10 +21,21 @@ import cz.msebera.android.httpclient.Header;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class PasswordUpdate extends AppCompatActivity {
+    String userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_update);
+        Intent i=getIntent();
+        Bundle bundle=i.getExtras();
+        if(USERNAME==null)
+        {
+            userName=bundle.getString("user");
+        }
+        else
+        {
+            userName=USERNAME;
+        }
         final EditText newpass=findViewById(R.id.editText13);
         final EditText cnfpass=findViewById(R.id.editText14);
         Button submit=findViewById(R.id.button26);
@@ -49,7 +60,7 @@ public class PasswordUpdate extends AppCompatActivity {
                     AsyncHttpClient client = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
                     params.add( "password", newpass.getText().toString().trim() );
-                    params.add( "username", USERNAME );
+                    params.add( "username", userName );
                     client.post( "https://dcfse.000webhostapp.com/updatePassword.php", params, new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
