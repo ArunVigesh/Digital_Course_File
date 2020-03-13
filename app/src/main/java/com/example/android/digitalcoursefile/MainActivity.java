@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,15 +30,36 @@ public class MainActivity extends AppCompatActivity {
     EditText username,password;
     TextView forgotPass;
     public static String USERNAME;
+    CheckBox savePass;
+    public static final String PREFS_NAME = "PrefFile";
+    private static final String PREF_USERNAME = "Username";
+    private static final String PREF_PASS = "Password";
+    private static final String PREF_ISCHECKED = "IsChecked";
+    public CheckBox remember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences sp1=this.getSharedPreferences("Login",0);
         progressDialog = new ProgressDialog(this);
         username=findViewById(R.id.editText);
         forgotPass=findViewById(R.id.textView80);
         password=findViewById(R.id.editText2);
         signup=findViewById(R.id.textView3);
+        remember=findViewById(R.id.checkBox);
+        SharedPreferences spref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        if(spref.contains(PREF_USERNAME)) {
+            username.setText(spref.getString(PREF_USERNAME, ""));
+        }
+        if(spref.contains((PREF_PASS))) {
+            password.setText(spref.getString(PREF_PASS, ""));
+        }
+        if(spref.contains((PREF_ISCHECKED)))
+        {
+            Boolean c=spref.getBoolean(PREF_ISCHECKED,false);
+            remember.setChecked(c);
+        }
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,20 +96,39 @@ public class MainActivity extends AppCompatActivity {
                                 USERNAME=userName;
                                 Log.e("ID", "onSuccess: "+USERNAME);
                             }
-                            Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                            if(username.getText().toString().trim().equals("admin")) {
+
+                            if((username.getText().toString().trim().equals("admin") )&& (username.getText().toString().trim().equals(USERNAME))) {
                                 Intent i = new Intent(MainActivity.this, AdminDashboard.class);
                                 startActivity(i);
-                                username.getText().clear();
-                                password.getText().clear();
+                                Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                             }
                             else if(username.getText().toString().trim().equals(USERNAME))
                             {
                                 Intent i=new Intent(MainActivity.this,Dashboard.class);
                                 startActivity(i);
-                                username.getText().clear();
-                                password.getText().clear();
+                                Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                             }
+                            else
+                            {
+                                Toast.makeText( getApplicationContext(), "Invalid Credentials ", Toast.LENGTH_SHORT ).show();
+                            }
+
+                            SharedPreferences pref;
+                            SharedPreferences.Editor ed;
+                            pref=getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                            ed=pref.edit();
+                            if(remember.isChecked()) {
+                                Boolean boolisChecked=remember.isChecked();
+                                ed.putString(PREF_USERNAME, username.getText().toString());
+                                ed.putString(PREF_PASS, password.getText().toString());
+                                ed.putBoolean(PREF_ISCHECKED, boolisChecked);
+                                ed.apply();
+                            }
+                            else
+                            {
+                                pref.edit().clear().apply();
+                            }
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -108,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
             forgotPass.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent i=new Intent(MainActivity.this,forgotPassword.class);
+                    startActivity(i);
                 }
             });
         }
