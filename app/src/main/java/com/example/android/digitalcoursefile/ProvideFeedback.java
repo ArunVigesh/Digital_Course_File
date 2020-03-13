@@ -26,6 +26,8 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class ProvideFeedback extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -61,19 +63,19 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
                         courses.add(jsonobject.getString("courseID"));
                     }
 
-                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
+                    ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spincourse.setAdapter(adapter);
 
                 }
                 catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -94,7 +96,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
                             Toast.makeText(getApplicationContext(),"Feedback Submitted ",Toast.LENGTH_SHORT).show();
 
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            Log.e(ExceptionString,JSONExceptionString+e );
                         }
                         Intent i =new Intent(ProvideFeedback.this,Dashboard.class);
                         startActivity(i);
@@ -102,7 +104,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
+                        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -115,6 +117,6 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
     }
 }

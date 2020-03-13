@@ -23,6 +23,9 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+
 public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     TextView signup;
@@ -30,17 +33,15 @@ public class MainActivity extends AppCompatActivity {
     EditText username,password;
     TextView forgotPass;
     public static String USERNAME;
-    CheckBox savePass;
     public static final String PREFS_NAME = "PrefFile";
     private static final String PREF_USERNAME = "Username";
     private static final String PREF_PASS = "Password";
     private static final String PREF_ISCHECKED = "IsChecked";
-    public CheckBox remember;
+    CheckBox remember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences sp1=this.getSharedPreferences("Login",0);
         progressDialog = new ProgressDialog(this);
         username=findViewById(R.id.editText);
         forgotPass=findViewById(R.id.textView80);
@@ -92,8 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText( getApplicationContext(), "Invalid Credentials ", Toast.LENGTH_SHORT ).show();
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonobject = jsonArray.getJSONObject(i);
-                                String userName = jsonobject.getString("userName");
-                                USERNAME=userName;
+                                USERNAME= jsonobject.getString("userName");
                                 Log.e("ID", "onSuccess: "+USERNAME);
                             }
 
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            Log.e(ExceptionString,JSONExceptionString+e );
                         }
 
                     }

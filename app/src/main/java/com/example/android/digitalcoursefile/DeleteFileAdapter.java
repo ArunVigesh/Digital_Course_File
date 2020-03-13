@@ -1,11 +1,9 @@
 package com.example.android.digitalcoursefile;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +19,6 @@ import com.loopj.android.http.RequestParams;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
-
-import static androidx.constraintlayout.widget.Constraints.TAG;
-import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.MyViewHolder>{
     private List<fileData> dataList;
@@ -80,7 +75,7 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(context.getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
                 AsyncHttpClient myclient = new AsyncHttpClient();
@@ -95,7 +90,7 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(context.getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

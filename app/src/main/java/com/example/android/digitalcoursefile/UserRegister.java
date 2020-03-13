@@ -18,6 +18,9 @@ import com.loopj.android.http.RequestParams;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+
 public class UserRegister extends AppCompatActivity {
     EditText firstName=null,lastName=null,userName=null,department=null,email=null,phone=null,password=null,confirmPassword=null;
     ProgressDialog progressDialog;
@@ -67,13 +70,13 @@ public class UserRegister extends AppCompatActivity {
                         progressDialog.dismiss();
                         Log.e( "ER", new String( responseBody ) );
                     } catch (Exception e) {
-                        e.printStackTrace();
+                            Log.e(ExceptionString,JSONExceptionString+e );
                     }
                 }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
 
                 });

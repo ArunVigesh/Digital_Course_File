@@ -17,6 +17,8 @@ import com.loopj.android.http.RequestParams;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class EmailUpdate extends AppCompatActivity {
@@ -57,13 +59,13 @@ public class EmailUpdate extends AppCompatActivity {
 
                                 Log.e( "ER", new String( responseBody ) );
                             } catch (Exception e) {
-                                e.printStackTrace();
+                                Log.e(ExceptionString,JSONExceptionString+e );
                             }
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                            Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                         }
 
                     });

@@ -1,12 +1,8 @@
 package com.example.android.digitalcoursefile;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -26,6 +22,9 @@ import org.json.JSONObject;
 import java.util.concurrent.ThreadLocalRandom;
 
 import cz.msebera.android.httpclient.Header;
+
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 
 public class forgotPassword extends AppCompatActivity {
  EditText otp,username;
@@ -60,7 +59,7 @@ public class forgotPassword extends AppCompatActivity {
                                 phoneNo=jsonobject.getString("phoneNo");
                             }
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                                randomNum =Integer.valueOf(ThreadLocalRandom.current().nextInt(1000, 9999));
+                                randomNum = ThreadLocalRandom.current().nextInt(1000, 9999);
                                 Log.e("OTP", String.valueOf(randomNum));
                                 Log.e("Phone", String.valueOf(phoneNo));
                                 SmsManager smsManager = SmsManager.getDefault();
@@ -68,14 +67,14 @@ public class forgotPassword extends AppCompatActivity {
 
                             }
                         } catch (JSONException e) {
-                            e.printStackTrace();
+                            Log.e(ExceptionString,JSONExceptionString+e );
                         }
 
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
 

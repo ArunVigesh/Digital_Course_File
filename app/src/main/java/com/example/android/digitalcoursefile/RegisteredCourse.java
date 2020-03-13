@@ -1,11 +1,9 @@
 package com.example.android.digitalcoursefile;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +13,13 @@ import java.util.List;
 
 public class RegisteredCourse extends RecyclerView.Adapter<RegisteredCourse.MyViewHolder> {
     private List<course> dataList;
-    private Context context;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView courseName,courseID;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            context=itemView.getContext();
+
             courseName=itemView.findViewById(R.id.textView35);
             courseID=itemView.findViewById(R.id.textView20);
 

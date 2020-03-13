@@ -1,18 +1,16 @@
 package com.example.android.digitalcoursefile;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +20,8 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 
 public class ApproveCourses extends AppCompatActivity {
     ArrayList<courseApp> dataList = new ArrayList<courseApp>();
@@ -59,14 +58,14 @@ public class ApproveCourses extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
             }
         });
     }

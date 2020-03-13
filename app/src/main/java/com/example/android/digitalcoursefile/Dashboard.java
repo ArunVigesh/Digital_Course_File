@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -20,9 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-private DrawerLayout drawer;
+
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -77,6 +77,7 @@ private DrawerLayout drawer;
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+        Toast.makeText(getApplicationContext(),"",Toast.LENGTH_SHORT).show();
 
     }
 }

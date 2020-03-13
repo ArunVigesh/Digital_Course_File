@@ -34,13 +34,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class fileUpload extends AppCompatActivity implements AdapterView.OnItemSelectedListener,View.OnClickListener{
@@ -71,7 +72,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
         fname=findViewById(R.id.editText11);
         upload.setOnClickListener(this);
         submit.setOnClickListener(this);
-        filetype=new ArrayList<String>();
+        filetype=new ArrayList();
         filetype.add("Select File Type");
         filetype.add("Assignment");
         filetype.add("Tutorial");
@@ -88,7 +89,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                 Log.e("ER",new String(responseBody));
                 JSONObject jsonObject;
                 try {
-                    courses=new ArrayList<String>();
+                    courses=new ArrayList();
                     courses.add("Select Course");
                     jsonObject = new JSONObject(new  String(responseBody));
                     JSONArray jsonArray = jsonObject.getJSONArray("courselist");
@@ -97,22 +98,22 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                         courses.add(jsonobject.getString("courseID"));
                     }
 
-                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spincourse.setAdapter(adapter);
 
                 }
                 catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
             }
         });
-        ArrayAdapter adapterFile = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,filetype);
+        ArrayAdapter<String> adapterFile = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,filetype);
         adapterFile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinfiletype.setAdapter(adapterFile);
 
@@ -133,7 +134,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -167,13 +168,13 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                             try {
                                 Log.e("ER", new String(responseBody));
                             } catch (Exception e) {
-                                e.printStackTrace();
+                                Log.e(ExceptionString,JSONExceptionString+e );
                             }
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                            Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                         }
 
                     });
@@ -196,14 +197,14 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult( requestCode, resultCode, data );
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == PICK_FILE_REQUEST) {
+        if (resultCode == Activity.RESULT_OK && requestCode == PICK_FILE_REQUEST) {
+
                 if (data == null) {
                     return;
                 }
                 Uri selectedFileUri = data.getData();
                 selectedFilePath = FilePath.getPath( this, selectedFileUri );
-                Extension=selectedFilePath.substring(selectedFilePath.lastIndexOf("."));
+                Extension=selectedFilePath.substring(selectedFilePath.lastIndexOf('.'));
                 Log.e( TAG, "Selected File Path : " + selectedFilePath );
 
                 if (selectedFilePath != null && !selectedFilePath.equals( "" )) {
@@ -212,10 +213,10 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                     Toast.makeText( this, "Unable to Upload File", Toast.LENGTH_SHORT ).show();
                 }
             }
-        }
+
     }
     public int uploadFile(String selectedFilePath) {
-
+        FileInputStream fileInputStream = null;
         int serverResponseCode = 0;
 
         HttpURLConnection connection;
@@ -248,7 +249,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
             try {
                 fileID=USERNAME+"-"+courseSelected+"-"+fileSelected+"-"+fname.getText().toString().trim()+Extension;
                 selectedFilePath = fileID;
-                FileInputStream fileInputStream = new FileInputStream(selectedFile);
+                fileInputStream = new FileInputStream(selectedFile);
                 URL url = new URL(SERVER_URL);
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setDoInput(true);//Allow Inputs
@@ -292,13 +293,13 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                     });
                 }
 
-                fileInputStream.close();
+
                 dataOutputStream.flush();
-                dataOutputStream.close();
+                //dataOutputStream.close();
 
 
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                Log.e(ExceptionString,JSONExceptionString+e );
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -306,13 +307,20 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                     }
                 });
             } catch (MalformedURLException e) {
-                e.printStackTrace();
+                Log.e(ExceptionString,JSONExceptionString+e );
                 Toast.makeText(fileUpload.this, "URL error!", Toast.LENGTH_SHORT).show();
 
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e(ExceptionString,JSONExceptionString+e );
                 Toast.makeText(fileUpload.this, "Cannot Read / Write File!", Toast.LENGTH_SHORT).show();
             }
+            /*finally {
+                try {
+                    //fileInputStream.close();
+                } catch (Exception e) {
+                    Log.e("Exception","JSON Exception"+e );
+                }
+            }*/
             dialog.dismiss();
             return serverResponseCode;
         }

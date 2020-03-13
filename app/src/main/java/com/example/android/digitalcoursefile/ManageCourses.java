@@ -24,10 +24,13 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+
 public class ManageCourses extends AppCompatActivity {
     EditText courseId;
     EditText courseName;
-    ArrayList<course> dataList = new ArrayList<course>();
+    ArrayList<course> dataList = new ArrayList();
     removeCourseAdapter mAdapter;
     RecyclerView removeCourse;
     @Override
@@ -50,13 +53,13 @@ public class ManageCourses extends AppCompatActivity {
                         try {
                             Log.e( "ER", new String( responseBody ) );
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            Log.e(ExceptionString,JSONExceptionString+e );
                         }
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
 
                 });
@@ -91,14 +94,14 @@ public class ManageCourses extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
             }
         });
 

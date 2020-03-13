@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,14 +32,21 @@ import cz.msebera.android.httpclient.Header;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class ActivityLog extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String courseSelected;
-    Button submit;
-    RecyclerView log;
-    Spinner spincourse;
-    EditText content;
-    List<String> courses;
-    ArrayList<log> dataList = new ArrayList<log>();
-    LogAdapter mAdapter;
+    private String courseSelected;
+    private Button submit;
+    private RecyclerView log;
+    private Spinner spincourse;
+    private EditText content;
+    private List<String> courses;
+    private ArrayList<log> dataList = new ArrayList();
+    private LogAdapter mAdapter;
+    public static String UserName="username";
+    public static String Courseid="courseID";
+    public static String FailedString="Failed";
+    public static String ExceptionString="Exception";
+    public static String JSONExceptionString="JSON Exception";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,35 +58,35 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
         log=findViewById(R.id.activityLog);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
-        params.add("username",USERNAME);
+        params.add(UserName,USERNAME);
         client.post("https://dcfse.000webhostapp.com/getCoursesReg.php", params,new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Log.e("ER",new String(responseBody));
                 JSONObject jsonObject;
                 try {
-                    courses=new ArrayList<String>();
+                    courses=new ArrayList();
                     courses.add("Select Course");
                     jsonObject = new JSONObject(new  String(responseBody));
                     JSONArray jsonArray = jsonObject.getJSONArray("courselist");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonobject = jsonArray.getJSONObject(i);
-                        courses.add(jsonobject.getString("courseID"));
+                        courses.add(jsonobject.getString(Courseid));
                     }
 
-                    ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
+                    ArrayAdapter<String> adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spincourse.setAdapter(adapter);
 
                 }
                 catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -88,7 +96,7 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
                 AsyncHttpClient myClient = new AsyncHttpClient();
                 RequestParams params = new RequestParams();
                 params.add("log",content.getText().toString().trim());
-                params.add("username",USERNAME);
+                params.add(UserName,USERNAME);
                 params.add("courseID",courseSelected);
                 myClient.post("https://dcfse.000webhostapp.com/SubmitLog.php", params, new AsyncHttpResponseHandler() {
                     @Override
@@ -97,14 +105,14 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
                             content.getText().clear();
                             Log.e( "ER", new String( responseBody ) );
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            Log.e(ExceptionString,JSONExceptionString+e );
                         }
                     }
 
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -125,7 +133,7 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
                         JSONObject jsonobject = jsonArray.getJSONObject(i);
                         String time=jsonobject.getString("Time");
                         String log=jsonobject.getString("log");
-                        String courseID=jsonobject.getString("courseID");
+                        String courseID=jsonobject.getString(Courseid);
                         log u=new log();
                         u.setTime(time);
                         u.setContent(log);
@@ -141,14 +149,14 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -161,7 +169,7 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
     }
 
 

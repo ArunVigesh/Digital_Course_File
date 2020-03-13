@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -26,9 +27,13 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+
 
 public class AdminHomeFragment extends Fragment {
-    ArrayList<userApproval> dataList = new ArrayList<userApproval>();
+    ArrayList<userApproval> dataList = new ArrayList();
     View view;
     UserApprovalAdapter mAdapter;
     RecyclerView approval;
@@ -77,14 +82,14 @@ Button submit;
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                Toast.makeText(getContext(),FailedString,Toast.LENGTH_SHORT).show();
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
@@ -100,14 +105,14 @@ Button submit;
                             announce.getText().clear();
                             Log.e( "ER", new String( responseBody ) );
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            Log.e(ExceptionString,JSONExceptionString+e );
                         }
                     }
 
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(getContext(),FailedString,Toast.LENGTH_SHORT).show();
                     }
                 });
             }

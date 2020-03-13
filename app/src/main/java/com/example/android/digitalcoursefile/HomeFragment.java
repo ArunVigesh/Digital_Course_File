@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -24,9 +25,12 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+
 public class HomeFragment extends Fragment {
     View view;
-    ArrayList<announce> dataList = new ArrayList<announce>();
+    ArrayList<announce> dataList = new ArrayList();
 
     AnnounceAdapter mAdapter;
     RecyclerView announce;
@@ -63,14 +67,14 @@ public class HomeFragment extends Fragment {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                Toast.makeText(getContext(),"Failed",Toast.LENGTH_SHORT).show();
             }
         });
         return view;

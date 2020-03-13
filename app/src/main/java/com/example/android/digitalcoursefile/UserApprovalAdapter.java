@@ -81,7 +81,7 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(context.getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -104,7 +104,7 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                        Toast.makeText(context.getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

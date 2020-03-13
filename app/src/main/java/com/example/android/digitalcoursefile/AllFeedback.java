@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,10 +20,12 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
+import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 
 public class AllFeedback extends AppCompatActivity {
-    ArrayList<viewfeedback> dataList = new ArrayList<viewfeedback>();
+    ArrayList<viewfeedback> dataList = new ArrayList();
     ViewAllFeed mAdapter;
     RecyclerView viewfeed;
     @Override
@@ -60,14 +62,14 @@ public class AllFeedback extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(ExceptionString,JSONExceptionString+e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
             }
         });
     }

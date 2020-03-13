@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +15,13 @@ import java.util.List;
 public class viewUserFeedAdapter extends RecyclerView.Adapter<viewUserFeedAdapter.MyViewHolder> {
 
     private List<viewFeed> dataList;
-    private Context context;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView courseID,feedback;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            context=itemView.getContext();
+
             courseID=itemView.findViewById(R.id.textView40);
             feedback=itemView.findViewById(R.id.textView41);
 

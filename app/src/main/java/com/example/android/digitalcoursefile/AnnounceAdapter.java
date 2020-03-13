@@ -1,11 +1,9 @@
 package com.example.android.digitalcoursefile;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +14,11 @@ import java.util.List;
 public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceAdapter.MyViewHolder> {
 
     private List<announce> dataList;
-    private Context context;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView time,announce;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            context=itemView.getContext();
             time=itemView.findViewById(R.id.textView63);
             announce=itemView.findViewById(R.id.textView64);
 
