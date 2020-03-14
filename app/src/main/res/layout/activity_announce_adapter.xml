@@ -4,20 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".AnnounceAdapter"
-    android:layout_margin="16dp"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView63"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Time" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:text="Time"
+        android:textColor="@color/textYellow"/>
 
     <TextView
         android:id="@+id/textView64"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:text="Announcement" />
 </LinearLayout>

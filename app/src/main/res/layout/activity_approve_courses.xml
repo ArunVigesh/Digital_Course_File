@@ -5,20 +5,24 @@
     android:layout_height="match_parent"
     tools:context=".ApproveCourses"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Course Approval"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:gravity="center"
         android:textSize="32sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/approveCourse"
-        android:layout_margin="8dp"
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

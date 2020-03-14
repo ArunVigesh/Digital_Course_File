@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:background="@color/background">
 
 
     <TextView
@@ -13,13 +14,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:textColor="@color/textYellow"
         android:gravity="center"
-        android:textSize="48sp"/>
+        android:layout_margin="16dp"
+        android:textSize="48sp"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
     <EditText
         android:id="@+id/editText"
         android:layout_width="match_parent"
@@ -27,18 +32,32 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="UserName"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#ffa500"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/textWhite">
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColorHint="@color/textWhite"
+        android:textColor="@color/textYellow"
         android:inputType="textPassword"
         android:hint="Password"
         />
@@ -49,29 +68,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Remember Password"
-        android:layout_margin="8dp"
-        android:textSize="16sp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textSize="16sp"
+        android:textColor="#ffa500"/>
 
     <TextView
         android:id="@+id/textView80"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
         android:textSize="20sp"
-        android:textColor="#ff0000"
+        android:textColor="@color/textWhite"
         android:text="Forgot Password ?" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SIGN IN"
+        android:textColor="@color/textWhite"
         android:layout_gravity="center"
-        android:layout_margin="16dp"/>
+        android:background="@drawable/round"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="16dp">
 
@@ -81,6 +112,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            android:textColor="@color/textWhite"
             android:text="New User ?" />
 
         <TextView
@@ -90,7 +126,11 @@
             android:layout_weight="1"
             android:textSize="16sp"
             android:text="Sign Up Here"
-            android:textColor="#0000FF"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            android:textColor="@color/textWhite"/>
 
 
     </LinearLayout>

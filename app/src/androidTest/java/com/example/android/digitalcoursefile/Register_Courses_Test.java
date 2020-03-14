@@ -30,7 +30,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.*;
 
-public class NavBar_Courses_Test {
+public class Register_Courses_Test {
     @Rule
     public ActivityTestRule<Dashboard> activityTestRule
             = new ActivityTestRule<>(Dashboard.class);
