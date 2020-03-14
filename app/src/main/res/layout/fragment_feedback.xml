@@ -2,14 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8dp">
+    android:background="@color/background">
 
     <Button
         android:id="@+id/button12"
         android:layout_width="256dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:text="Provide Feedback" />
 
     <Button
@@ -17,7 +22,12 @@
         android:layout_width="256dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:text="View All Feedback" />
 
     <Button
@@ -25,6 +35,11 @@
         android:layout_width="256dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:text="Delete My Feedback" />
 </LinearLayout>

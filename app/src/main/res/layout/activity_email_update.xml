@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EmailUpdate"
-    android:layout_margin="16dp"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <TextView
@@ -14,30 +14,46 @@
         android:text="Update Email"
         android:gravity="center"
         android:textSize="32sp"
-        android:layout_margin="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
     <EditText
         android:id="@+id/editText16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_margin="8dp"
         android:inputType="textEmailAddress"
-        android:hint="New Email"/>
+        android:hint="New Email"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
     <EditText
         android:id="@+id/editText17"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"
         android:inputType="textEmailAddress"
         android:hint="Confirm Email"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -46,6 +62,11 @@
         android:id="@+id/button28"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:text="Submit" />
 </LinearLayout>

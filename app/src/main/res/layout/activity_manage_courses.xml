@@ -5,14 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".ManageCourses"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:background="@color/background"
+    >
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Manage Courses"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:gravity="center"
         android:textSize="32sp"/>
 
@@ -22,12 +27,17 @@
         android:layout_height="wrap_content"
         android:text="Add Courses"
         android:gravity="center"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:textSize="16sp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
     <EditText
         android:id="@+id/editText21"
         android:layout_width="match_parent"
@@ -35,26 +45,42 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Course ID"
-        android:layout_margin="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
 
         <EditText
             android:id="@+id/editText22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            android:textColor="@color/textYellow"
             android:ems="10"
             android:hint="Course Name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:backgroundTint="@android:color/holo_red_light"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button25"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Course" />
@@ -64,7 +90,11 @@
         android:id="@+id/textView26"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:gravity="center"
         android:text="Remove Courses"
         android:textSize="16sp" />
@@ -73,5 +103,9 @@
         android:id="@+id/removeCourse"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        />
 </LinearLayout>

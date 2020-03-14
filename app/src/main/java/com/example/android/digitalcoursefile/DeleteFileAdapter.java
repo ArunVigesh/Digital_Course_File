@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +26,12 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
     private List<fileData> dataList;
     private Context context;
     Button delete;
-
+    TextView fileUrl;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseID,fileName,fileType;
-        TextView fileUrl;
+        TextView courseID;
+        TextView fileName;
+        TextView fileType;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,7 +62,7 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
         holder.fileName.setText("File Name : "+tc.getFilename());
         holder.courseID.setText("Course ID : "+tc.getCourseID());
         holder.fileType.setText("File Type : "+tc.getFiletype());
-        holder.fileUrl.setText(tc.getFileurl());
+        fileUrl.setText(tc.getFileurl());
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +98,14 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
                         Toast.makeText(context.getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+        fileUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(tc.getFileurl()));
+                context.startActivity(i);
             }
         });
     }

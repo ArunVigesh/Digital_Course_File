@@ -5,26 +5,39 @@
     android:layout_height="wrap_content"
     tools:context=".ViewAllFeed"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+   android:background="@color/background"
+    android:layout_margin="8dp">
 
     <TextView
         android:id="@+id/textView44"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:text="Username " />
 
     <TextView
         android:id="@+id/textView45"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:text="Course ID" />
 
     <TextView
         android:id="@+id/textView46"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:text="Feedback" />
 </LinearLayout>

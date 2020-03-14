@@ -6,54 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".fileUpload"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:background="@color/background"
+    >
 
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:gravity="center"
+        android:text="File Upload"
         android:textSize="32sp"
-        android:text="File Upload" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
     <EditText
         android:id="@+id/editText11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"
         android:inputType="textPersonName"
         android:hint="File Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Course ID" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select File Type" />
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -61,14 +90,22 @@
         android:id="@+id/textView51"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:text="Select File" />
 
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/round"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_upload" />
 
@@ -76,6 +113,11 @@
         android:id="@+id/button23"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:text="Upload" />
 </LinearLayout>

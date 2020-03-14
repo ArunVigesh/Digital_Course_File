@@ -5,48 +5,70 @@
     android:layout_height="match_parent"
     tools:context=".UpdatePhone"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:background="@color/background"
+    >
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update Phone"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:gravity="center"
         android:textSize="32sp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
     <EditText
         android:id="@+id/editText19"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="New Phone"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"
         android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
 
     <EditText
         android:id="@+id/editText20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:hint="Confirm Phone"
+        android:backgroundTint="@android:color/holo_red_light"
         android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/button27"
         android:layout_width="match_parent"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:layout_height="wrap_content"
         android:text="Submit" />
 </LinearLayout>

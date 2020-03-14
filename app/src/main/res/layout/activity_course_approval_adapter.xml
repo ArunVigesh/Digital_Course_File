@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     tools:context=".CourseApprovalAdapter"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="8dp">
 
     <TextView
         android:id="@+id/textView47"

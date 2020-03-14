@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".SearchFile"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:background="@color/background"
+    >
 
     <TextView
         android:id="@+id/textView79"
@@ -14,18 +15,28 @@
         android:text="Search File"
         android:gravity="center"
         android:textSize="32sp"
-        android:layout_margin="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/textYellow">
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="File Name"
-        android:layout_margin="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
+        android:backgroundTint="@android:color/holo_red_light"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -33,7 +44,12 @@
         android:id="@+id/button40"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textWhite"
+        android:background="@drawable/round"
         android:text="Search" />
 
     <TextView
@@ -41,7 +57,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="File Details"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:visibility="invisible"/>
 
 
@@ -50,7 +70,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Course ID"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"
         android:visibility="invisible"/>
 
     <TextView
@@ -59,7 +83,11 @@
         android:layout_height="wrap_content"
         android:text="FIle Type"
         android:visibility="invisible"
-        android:layout_margin="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/textYellow"/>
 
     <TextView
         android:id="@+id/textView85"
@@ -67,7 +95,10 @@
         android:layout_height="wrap_content"
         android:text="File URL"
         android:textColor="#0000ff"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
         android:visibility="invisible"/>
 
 </LinearLayout>
