@@ -24,6 +24,7 @@ public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceAdapter.MyView
 
         }
     }
+    public AnnounceAdapter(){}
     public AnnounceAdapter(List<announce> dataList) {
         this.dataList = dataList;
     }

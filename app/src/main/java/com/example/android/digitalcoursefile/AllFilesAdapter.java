@@ -32,9 +32,11 @@ public class AllFilesAdapter extends RecyclerView.Adapter<AllFilesAdapter.MyView
 
         }
     }
+
     public AllFilesAdapter(List<allFiles> dataList) {
         this.dataList = dataList;
     }
+    public AllFilesAdapter(){}
     @NonNull
     @Override
     public AllFilesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
