@@ -36,6 +36,7 @@ public class viewFilesAdapter extends RecyclerView.Adapter<viewFilesAdapter.MyVi
     public viewFilesAdapter(List<fileData> dataList) {
         this.dataList = dataList;
     }
+    public viewFilesAdapter(){}
     @NonNull
     @Override
     public viewFilesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

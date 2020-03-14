@@ -30,6 +30,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     public ViewAllFeed(List<viewfeedback> dataList) {
         this.dataList = dataList;
     }
+    public ViewAllFeed(){}
     @NonNull
     @Override
     public ViewAllFeed.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

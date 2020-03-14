@@ -42,6 +42,7 @@ public class DeleteFeedAdapter extends RecyclerView.Adapter<DeleteFeedAdapter.My
     public DeleteFeedAdapter(List<viewFeed> dataList) {
         this.dataList = dataList;
     }
+    public DeleteFeedAdapter(){}
     @NonNull
     @Override
     public DeleteFeedAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

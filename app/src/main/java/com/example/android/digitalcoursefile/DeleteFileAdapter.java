@@ -43,6 +43,7 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
     public DeleteFileAdapter(List<fileData> dataList) {
         this.dataList = dataList;
     }
+    public DeleteFileAdapter(){}
     @NonNull
     @Override
     public DeleteFileAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -30,6 +30,7 @@ public class trackRegistrationAdapter extends RecyclerView.Adapter<trackRegistra
     public trackRegistrationAdapter(List<trackCourse> dataList) {
         this.dataList = dataList;
     }
+    public trackRegistrationAdapter(){}
     @NonNull
     @Override
     public trackRegistrationAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

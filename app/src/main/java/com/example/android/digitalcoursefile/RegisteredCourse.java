@@ -28,6 +28,7 @@ public class RegisteredCourse extends RecyclerView.Adapter<RegisteredCourse.MyVi
     public RegisteredCourse(List<course> dataList) {
         this.dataList = dataList;
     }
+    public RegisteredCourse(){}
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

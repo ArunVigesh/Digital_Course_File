@@ -41,6 +41,7 @@ public class CourseApprovalAdapter extends RecyclerView.Adapter<CourseApprovalAd
     public CourseApprovalAdapter(List<courseApp> dataList) {
         this.dataList = dataList;
     }
+    public CourseApprovalAdapter(){}
     @NonNull
     @Override
     public CourseApprovalAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

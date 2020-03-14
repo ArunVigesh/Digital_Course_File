@@ -30,6 +30,7 @@ public class viewUserFeedAdapter extends RecyclerView.Adapter<viewUserFeedAdapte
     public viewUserFeedAdapter(List<viewFeed> dataList) {
         this.dataList = dataList;
     }
+    public viewUserFeedAdapter(){}
     @NonNull
     @Override
     public viewUserFeedAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

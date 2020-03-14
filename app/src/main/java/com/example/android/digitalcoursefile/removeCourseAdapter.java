@@ -39,6 +39,7 @@ public class removeCourseAdapter extends RecyclerView.Adapter<removeCourseAdapte
     public removeCourseAdapter(List<course> dataList) {
         this.dataList = dataList;
     }
+    public removeCourseAdapter(){}
     @NonNull
     @Override
     public removeCourseAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

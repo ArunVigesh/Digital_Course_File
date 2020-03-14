@@ -29,6 +29,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.MyViewHolder>  {
     public LogAdapter(List<log> dataList) {
         this.dataList = dataList;
     }
+    public LogAdapter(){}
     @NonNull
     @Override
     public LogAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

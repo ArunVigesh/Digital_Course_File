@@ -44,6 +44,7 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
     public UserApprovalAdapter(List<userApproval> dataList) {
         this.dataList = dataList;
     }
+    public UserApprovalAdapter(){}
     @NonNull
     @Override
     public UserApprovalAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
