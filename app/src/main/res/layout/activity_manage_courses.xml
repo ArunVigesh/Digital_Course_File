@@ -6,8 +6,17 @@
     tools:context=".ManageCourses"
     android:orientation="vertical"
     android:background="@color/background"
+    android:layout_marginTop="16dp"
     >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
     <TextView
         android:id="@+id/textView24"
         android:layout_width="match_parent"
@@ -108,4 +117,6 @@
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
         />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

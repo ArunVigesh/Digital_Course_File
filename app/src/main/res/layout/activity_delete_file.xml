@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".DeleteFile"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="16dp">
 
     <TextView
         android:id="@+id/textView62"

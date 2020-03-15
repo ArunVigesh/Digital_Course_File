@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     tools:context=".trackRegistrationAdapter"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="#010102"
     android:layout_margin="8dp">
 
 

@@ -70,6 +70,7 @@ public class DeleteFeedAdapter extends RecyclerView.Adapter<DeleteFeedAdapter.My
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         Log.e("ER", new String(responseBody));
                         Toast.makeText(context.getApplicationContext(), "Feedback Deleted", Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override

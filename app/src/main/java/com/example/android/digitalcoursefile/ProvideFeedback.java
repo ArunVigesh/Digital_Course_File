@@ -99,7 +99,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
                         } catch (Exception e) {
                             Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
-                        Intent i =new Intent(ProvideFeedback.this,Dashboard.class);
+                        Intent i =new Intent(ProvideFeedback.this,FeedbackFragment.class);
                         startActivity(i);
                     }
 

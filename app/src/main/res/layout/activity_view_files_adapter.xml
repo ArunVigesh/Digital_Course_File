@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     tools:context=".viewFilesAdapter"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="#010102"
     android:layout_margin="8dp"
     >
 
@@ -67,7 +67,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginRight="32dp"
             android:layout_marginLeft="16dp"
-            android:textColor="#0000ff"/>
+            android:textColor="#ffffff"/>
     </LinearLayout>
 
 

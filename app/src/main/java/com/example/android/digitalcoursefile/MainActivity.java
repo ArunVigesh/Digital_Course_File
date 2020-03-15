@@ -109,79 +109,73 @@ public class MainActivity extends AppCompatActivity {
             signin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    progressDialog.setMessage("Logging in...");
-                    progressDialog.show();
+
+
                     AsyncHttpClient myClient = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
-                    params.add("userName",usernameEditText.getText().toString());
-                    params.add("password",password.getText().toString());
-                    myClient.post("https://dcfse.000webhostapp.com/userLogin.php",params,new AsyncHttpResponseHandler() {
+                    if(notEmptyValues()&&matchRegex()) {
+                        progressDialog.setMessage("Logging in...");
+                        progressDialog.show();
+                        params.add("userName", usernameEditText.getText().toString());
+                        params.add("password", password.getText().toString());
+                        myClient.post("https://dcfse.000webhostapp.com/userLogin.php", params, new AsyncHttpResponseHandler() {
 
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        try {
-                            progressDialog.dismiss();
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                try {
+                                    progressDialog.dismiss();
 
-                            Log.e("ER",new String(responseBody));
-                            JSONObject jsonObject = new JSONObject(new  String(responseBody));
-                            JSONArray jsonArray = jsonObject.getJSONArray("getlist");
-                            Log.e("Size", "JSON Array: "+jsonArray.length());
-                            if(jsonArray.length()==0)
-                                Toast.makeText( getApplicationContext(), "Invalid Credentials ", Toast.LENGTH_SHORT ).show();
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject jsonobject = jsonArray.getJSONObject(i);
-                                USERNAME= jsonobject.getString("userName");
-                                Log.e("ID", "onSuccess: "+USERNAME);
+                                    Log.e("ER", new String(responseBody));
+                                    JSONObject jsonObject = new JSONObject(new String(responseBody));
+                                    JSONArray jsonArray = jsonObject.getJSONArray("getlist");
+                                    Log.e("Size", "JSON Array: " + jsonArray.length());
+                                    if (jsonArray.length() == 0)
+                                        Toast.makeText(getApplicationContext(), "Invalid Credentials ", Toast.LENGTH_SHORT).show();
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject jsonobject = jsonArray.getJSONObject(i);
+                                        USERNAME = jsonobject.getString("userName");
+                                        Log.e("ID", "onSuccess: " + USERNAME);
+                                    }
+
+                                    if ((usernameEditText.getText().toString().trim().equals("Admin")) && (usernameEditText.getText().toString().trim().equals(USERNAME))) {
+                                        Intent i = new Intent(MainActivity.this, AdminDashboard.class);
+                                        startActivity(i);
+                                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                    } else if (usernameEditText.getText().toString().trim().equals(USERNAME)) {
+                                        Intent i = new Intent(MainActivity.this, Dashboard.class);
+                                        startActivity(i);
+                                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Invalid Credentials ", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    SharedPreferences pref;
+                                    SharedPreferences.Editor ed;
+                                    pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                                    ed = pref.edit();
+                                    if (remember.isChecked()) {
+                                        Boolean boolisChecked = remember.isChecked();
+                                        ed.putString(PREF_USERNAME, usernameEditText.getText().toString());
+                                        ed.putString(PREF_PASS, password.getText().toString());
+                                        ed.putBoolean(PREF_ISCHECKED, boolisChecked);
+                                        ed.apply();
+                                    } else {
+                                        pref.edit().clear().apply();
+                                    }
+
+                                } catch (Exception e) {
+                                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR + e);
+                                }
+
                             }
 
-                            if((usernameEditText.getText().toString().trim().equals("Admin") )&& (usernameEditText.getText().toString().trim().equals(USERNAME))) {
-                                Intent i = new Intent(MainActivity.this, AdminDashboard.class);
-                                startActivity(i);
-                                Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                             }
-                            else if(usernameEditText.getText().toString().trim().equals(USERNAME))
-                            {
-                                Intent i=new Intent(MainActivity.this,Dashboard.class);
-                                startActivity(i);
-                                Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-                                Toast.makeText( getApplicationContext(), "Invalid Credentials ", Toast.LENGTH_SHORT ).show();
-                            }
-
-                            SharedPreferences pref;
-                            SharedPreferences.Editor ed;
-                            pref=getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                            ed=pref.edit();
-                            if(remember.isChecked()) {
-                                Boolean boolisChecked=remember.isChecked();
-                                ed.putString(PREF_USERNAME, usernameEditText.getText().toString());
-                                ed.putString(PREF_PASS, password.getText().toString());
-                                ed.putBoolean(PREF_ISCHECKED, boolisChecked);
-                                ed.apply();
-                            }
-                            else
-                            {
-                                pref.edit().clear().apply();
-                            }
-
-                        } catch (Exception e) {
-                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
-                        }
-
+                        });
                     }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        progressDialog.dismiss();
-                        Toast.makeText( getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT ).show();
-                    }
-                });
-
-
-
-
                 }
             });
             forgotPass.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +186,33 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+public boolean notEmptyValues()
+{
+    if(usernameEditText.getText().toString().isEmpty())
+    {
+        usernameEditText.setError("Field Empty");
+        return false;
+    }
+    else if(password.getText().toString().isEmpty())
+    {
+        password.setError("Field Empty");
+        return false;
+    }
+    else
+        return true;
 
+}
+public boolean matchRegex()
+{
+    if(checkUsername(usernameEditText.getText().toString().trim())&&checkPassword(password.getText().toString().trim()))
+    {
+        return true;
+    }
+    else {
+        Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+        return false;
+    }
+}
 
 
 

@@ -5,8 +5,9 @@
     android:layout_height="wrap_content"
     tools:context=".AllFilesAdapter"
     android:orientation="vertical"
-    android:background="@color/background"
-    android:layout_margin="8dp">
+    android:background="#010102"
+    android:layout_margin="8dp"
+    >
 
     <TextView
         android:id="@+id/textView73"
@@ -78,6 +79,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="10"
             android:text=""
-            android:textColor="#0000ff"/>
+            android:textColor="#ffffff"/>
     </LinearLayout>
 </LinearLayout>
