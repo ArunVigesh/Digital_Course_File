@@ -2,7 +2,9 @@ package com.example.android.digitalcoursefile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,14 +28,15 @@ import java.util.regex.Pattern;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 
 public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     TextView signup;
     Button signin;
-    EditText username,password;
+    EditText usernameEditText;
+    EditText password;
     TextView forgotPass;
     public static String USERNAME;
     public static final String PREFS_NAME = "PrefFile";
@@ -42,6 +45,22 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREF_ISCHECKED = "IsChecked";
     CheckBox remember;
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent a = new Intent(Intent.ACTION_MAIN);
+                        a.addCategory(Intent.CATEGORY_HOME);
+                        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(a);
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
     public static boolean checkUsername(String username) {
         Pattern VALID_USERNAME_REGEX = Pattern.compile("^(?=.{4,10}$)([a-zA-Z]+)$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = VALID_USERNAME_REGEX.matcher(username);
@@ -60,14 +79,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(this);
-        username=findViewById(R.id.editText);
+        usernameEditText=findViewById(R.id.editText);
         forgotPass=findViewById(R.id.textView80);
         password=findViewById(R.id.editText2);
         signup=findViewById(R.id.textView3);
         remember=findViewById(R.id.checkBox);
+
         SharedPreferences spref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         if(spref.contains(PREF_USERNAME)) {
-            username.setText(spref.getString(PREF_USERNAME, ""));
+            usernameEditText.setText(spref.getString(PREF_USERNAME, ""));
         }
         if(spref.contains((PREF_PASS))) {
             password.setText(spref.getString(PREF_PASS, ""));
@@ -93,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     progressDialog.show();
                     AsyncHttpClient myClient = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
-                    params.add("userName",username.getText().toString());
+                    params.add("userName",usernameEditText.getText().toString());
                     params.add("password",password.getText().toString());
                     myClient.post("https://dcfse.000webhostapp.com/userLogin.php",params,new AsyncHttpResponseHandler() {
 
@@ -114,12 +134,12 @@ public class MainActivity extends AppCompatActivity {
                                 Log.e("ID", "onSuccess: "+USERNAME);
                             }
 
-                            if((username.getText().toString().trim().equals("admin") )&& (username.getText().toString().trim().equals(USERNAME))) {
+                            if((usernameEditText.getText().toString().trim().equals("Admin") )&& (usernameEditText.getText().toString().trim().equals(USERNAME))) {
                                 Intent i = new Intent(MainActivity.this, AdminDashboard.class);
                                 startActivity(i);
                                 Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                             }
-                            else if(username.getText().toString().trim().equals(USERNAME))
+                            else if(usernameEditText.getText().toString().trim().equals(USERNAME))
                             {
                                 Intent i=new Intent(MainActivity.this,Dashboard.class);
                                 startActivity(i);
@@ -136,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                             ed=pref.edit();
                             if(remember.isChecked()) {
                                 Boolean boolisChecked=remember.isChecked();
-                                ed.putString(PREF_USERNAME, username.getText().toString());
+                                ed.putString(PREF_USERNAME, usernameEditText.getText().toString());
                                 ed.putString(PREF_PASS, password.getText().toString());
                                 ed.putBoolean(PREF_ISCHECKED, boolisChecked);
                                 ed.apply();
@@ -147,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                         } catch (Exception e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
 
                     }

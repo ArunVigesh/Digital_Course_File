@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -23,9 +24,9 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.FAILEDSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class CourseRegistration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -49,7 +50,7 @@ public class CourseRegistration extends AppCompatActivity implements AdapterView
                 Log.e("ER",new String(responseBody));
                 JSONObject jsonObject;
                 try {
-                    courses=new ArrayList<String>();
+                    courses=new ArrayList<>();
                     courses.add("Select Course");
                     jsonObject = new JSONObject(new  String(responseBody));
                     JSONArray jsonArray = jsonObject.getJSONArray("courselist");
@@ -59,13 +60,13 @@ public class CourseRegistration extends AppCompatActivity implements AdapterView
 
                     }
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spincourse.setAdapter(adapter);
 
                 }
                 catch (JSONException e) {
-                    Log.e(ExceptionString,JSONExceptionString+e );
+                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 }
 
 
@@ -75,7 +76,7 @@ public class CourseRegistration extends AppCompatActivity implements AdapterView
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -94,14 +95,14 @@ public class CourseRegistration extends AppCompatActivity implements AdapterView
                             Log.e( "ER", new String( responseBody ) );
                             Toast.makeText(getApplicationContext(),"Course Registered Wait for Approval... ",Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
 
                     }
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
                     }
 
                 });
@@ -118,7 +119,7 @@ public class CourseRegistration extends AppCompatActivity implements AdapterView
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
     }
 
 }

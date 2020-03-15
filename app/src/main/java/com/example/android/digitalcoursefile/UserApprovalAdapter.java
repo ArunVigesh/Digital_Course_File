@@ -24,9 +24,15 @@ public class UserApprovalAdapter extends RecyclerView.Adapter<UserApprovalAdapte
     private List<userApproval> dataList;
     private Context context;
     String approval;
-    Button approve,reject;
+    Button approve;
+    Button reject;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView firstName,lastName,userName,email,phone,department;
+        TextView firstName;
+        TextView lastName;
+        TextView userName;
+        TextView email;
+        TextView phone;
+        TextView department;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -1,7 +1,8 @@
 package com.example.android.digitalcoursefile;
 
 public class announce {
-    String time,announcement;
+    String time;
+    String announcement;
 
     public String getTime() {
         return time;

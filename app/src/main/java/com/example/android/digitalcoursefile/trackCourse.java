@@ -1,7 +1,8 @@
 package com.example.android.digitalcoursefile;
 
 public class trackCourse {
-    String courseID,courseName;
+    String courseID;
+    String courseName;
     int approval;
 
     public String getCourseID() {

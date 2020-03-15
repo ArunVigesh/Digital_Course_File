@@ -24,8 +24,8 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 
 public class ManageCourses extends AppCompatActivity {
     EditText courseId;
@@ -53,7 +53,7 @@ public class ManageCourses extends AppCompatActivity {
                         try {
                             Log.e( "ER", new String( responseBody ) );
                         } catch (Exception e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
                     }
 
@@ -94,7 +94,7 @@ public class ManageCourses extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    Log.e(ExceptionString,JSONExceptionString+e );
+                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 }
 
             }

@@ -20,7 +20,9 @@ public class viewFilesAdapter extends RecyclerView.Adapter<viewFilesAdapter.MyVi
     TextView fileUrl;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseID,fileName,fileType;
+        TextView courseID;
+        TextView fileName;
+        TextView fileType;
 
 
         public MyViewHolder(@NonNull View itemView) {

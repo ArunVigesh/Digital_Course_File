@@ -1,16 +1,13 @@
 package com.example.android.digitalcoursefile;
 
-import android.content.Context;
-import android.view.View;
-
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.not;
 import static androidx.test.espresso.Espresso.onView;
@@ -45,9 +42,10 @@ public class LoginTest {
 
     @Test
     public void clickLoginButton_SuccessfulLogin() throws Exception{
-        onView(withId(R.id.editText)).perform(typeText("test"));
-        onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText)).perform(typeText("Vijay"));
+        onView(withId(R.id.editText2)).perform(typeText("Sai18"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
+        TimeUnit.MILLISECONDS.sleep(3000);
         onView(withText("Login Successful")).inRoot(withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 //

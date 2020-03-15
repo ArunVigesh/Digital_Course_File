@@ -25,7 +25,8 @@ public class removeCourseAdapter extends RecyclerView.Adapter<removeCourseAdapte
     private Context context;
     Button deletec;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseID,courseName;
+        TextView courseID;
+        TextView courseName;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

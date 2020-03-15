@@ -4,7 +4,6 @@ package com.example.android.digitalcoursefile;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,8 @@ public class viewUserFeedAdapter extends RecyclerView.Adapter<viewUserFeedAdapte
     private List<viewFeed> dataList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseID,feedback;
+        TextView courseID;
+        TextView feedback;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

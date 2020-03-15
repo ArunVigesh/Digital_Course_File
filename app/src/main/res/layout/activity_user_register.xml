@@ -216,7 +216,7 @@ android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
-            android:textColor="@color/textWhite"/>
+            android:textColor="@color/colorAccent"/>
 
         <TextView
             android:id="@+id/textView6"
@@ -229,7 +229,7 @@ android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
             android:textSize="16sp"
-            android:textColor="@color/textWhite"/>
+            android:textColor="@color/colorAccent"/>
     </LinearLayout>
     </LinearLayout>
 </ScrollView>

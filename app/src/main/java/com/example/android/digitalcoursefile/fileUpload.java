@@ -42,9 +42,9 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.FAILEDSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class fileUpload extends AppCompatActivity implements AdapterView.OnItemSelectedListener,View.OnClickListener{
@@ -55,11 +55,13 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
     private static final String TAG = fileUpload.class.getSimpleName();
     private String selectedFilePath;
     private String SERVER_URL = "https://dcfse.000webhostapp.com/FilesUpload.php";
-    String courseSelected,fileSelected;
+    String courseSelected;
+    String fileSelected;
     ImageButton upload;
     Button submit;
     EditText fname;
-    Spinner spincourse,spinfiletype;
+    Spinner spincourse;
+    Spinner spinfiletype;
     List<String> courses;
     List<String> filetype;
     @Override
@@ -101,19 +103,19 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                         courses.add(jsonobject.getString("courseID"));
                     }
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item,courses);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spincourse.setAdapter(adapter);
 
                 }
                 catch (JSONException e) {
-                    Log.e(ExceptionString,JSONExceptionString+e );
+                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
             }
         });
         ArrayAdapter<String> adapterFile = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,filetype);
@@ -137,7 +139,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -171,13 +173,13 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                             try {
                                 Log.e("ER", new String(responseBody));
                             } catch (Exception e) {
-                                Log.e(ExceptionString,JSONExceptionString+e );
+                                Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                             }
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                            Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
                         }
 
                     });
@@ -219,7 +221,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
             }
 
     }
-    public int uploadFile(String selectedFilePath) {
+    public void uploadFile(String selectedFilePath) {
         FileInputStream fileInputStream = null;
         int serverResponseCode = 0;
 
@@ -230,7 +232,9 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
         String boundary = "*****";
 
 
-        int bytesRead, bytesAvailable, bufferSize;
+        int bytesRead;
+        int bytesAvailable;
+        int bufferSize;
         byte[] buffer;
         int maxBufferSize = 1 * 1024 * 1024;
         File selectedFile = new File(selectedFilePath);
@@ -244,7 +248,8 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                     Toast.makeText( getApplicationContext(), "Source File Doesn't Exist", Toast.LENGTH_SHORT ).show();
                 }
             });
-            return 0;
+            //return serverResponseCode;
+            //return 0;
         } else {
             try {
                 fileID=USERNAME+"-"+courseSelected+"-"+fileSelected+"-"+fname.getText().toString().trim()+Extension;
@@ -298,7 +303,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
 
             } catch (FileNotFoundException e) {
-                Log.e(ExceptionString,JSONExceptionString+e );
+                Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -306,24 +311,24 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                     }
                 });
             } catch (MalformedURLException e) {
-                Log.e(ExceptionString,JSONExceptionString+e );
+                Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 Toast.makeText(fileUpload.this, "URL error!", Toast.LENGTH_SHORT).show();
 
             } catch (IOException e) {
-                Log.e(ExceptionString,JSONExceptionString+e );
+                Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 Toast.makeText(fileUpload.this, "Cannot Read / Write File!", Toast.LENGTH_SHORT).show();
             }
             finally {
 
-                try { if (fileInputStream != null) fileInputStream.close(); } catch(IOException e) {Log.e(ExceptionString,JSONExceptionString+e );}
-                    try { if (dataOutputStream != null) dataOutputStream.flush(); } catch(IOException ex) {Log.e(ExceptionString,JSONExceptionString+ex );}
+                try { if (fileInputStream != null) fileInputStream.close(); } catch(IOException e) {Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );}
+                    try { if (dataOutputStream != null) dataOutputStream.flush(); } catch(IOException ex) {Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +ex );}
 
                     }
 
 
 
                     dialog.dismiss();
-            return serverResponseCode;
+            //return serverResponseCode;
         }
     }
 

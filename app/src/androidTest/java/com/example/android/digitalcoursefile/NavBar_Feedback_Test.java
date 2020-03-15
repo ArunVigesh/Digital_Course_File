@@ -11,6 +11,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.concurrent.TimeUnit;
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.DrawerMatchers.isClosed;
@@ -35,13 +37,13 @@ public class NavBar_Feedback_Test {
                 .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
                 .perform(DrawerActions.open()); // Open Drawer
 
-        Thread.sleep(1500);
+        TimeUnit.MILLISECONDS.sleep(1500);
 
         // Start the screen of your activity.
         onView(withId(R.id.nav_view))
                 .perform(NavigationViewActions.navigateTo(R.id.nav_files));
 
-        Thread.sleep(1500);
+        TimeUnit.MILLISECONDS.sleep(1500);
 
         // Check that you Activity was opened.
         //onView(withId(R.id.proceed_date)).check(matches(isDisplayed()));

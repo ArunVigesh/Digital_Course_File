@@ -20,8 +20,8 @@ import java.util.regex.Pattern;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class UpdatePhone extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class UpdatePhone extends AppCompatActivity {
             if(phone1.contentEquals(phone2)) return true;
             else return false;
         }
-        return  false;
+        else return  false;
     }
 
     @Override
@@ -78,7 +78,7 @@ public class UpdatePhone extends AppCompatActivity {
 
                                 Log.e( "ER", new String( responseBody ) );
                             } catch (Exception e) {
-                                Log.e(ExceptionString,JSONExceptionString+e );
+                                Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                             }
                         }
 

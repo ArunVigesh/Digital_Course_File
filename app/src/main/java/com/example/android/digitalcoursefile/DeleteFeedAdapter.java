@@ -27,7 +27,8 @@ public class DeleteFeedAdapter extends RecyclerView.Adapter<DeleteFeedAdapter.My
     private Context context;
     Button deletef;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseID,feedback;
+        TextView courseID;
+        TextView feedback;
 
 
         public MyViewHolder(@NonNull View itemView) {

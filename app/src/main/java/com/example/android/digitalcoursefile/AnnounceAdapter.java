@@ -3,7 +3,6 @@ package com.example.android.digitalcoursefile;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,8 @@ public class AnnounceAdapter extends RecyclerView.Adapter<AnnounceAdapter.MyView
 
     private List<announce> dataList;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView time,announce;
+        TextView time;
+        TextView announce;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

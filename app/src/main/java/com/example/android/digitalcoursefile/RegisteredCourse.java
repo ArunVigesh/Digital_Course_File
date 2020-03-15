@@ -3,7 +3,6 @@ package com.example.android.digitalcoursefile;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,8 @@ public class RegisteredCourse extends RecyclerView.Adapter<RegisteredCourse.MyVi
     private List<course> dataList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseName,courseID;
+        TextView courseName;
+        TextView courseID;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

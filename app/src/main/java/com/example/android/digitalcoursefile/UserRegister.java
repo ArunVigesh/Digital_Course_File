@@ -18,11 +18,18 @@ import com.loopj.android.http.RequestParams;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 
 public class UserRegister extends AppCompatActivity {
-    EditText firstName=null,lastName=null,userName=null,department=null,email=null,phone=null,password=null,confirmPassword=null;
+    EditText firstName=null;
+    EditText lastName=null;
+    EditText userName=null;
+    EditText department=null;
+    EditText email=null;
+    EditText phone=null;
+    EditText password=null;
+    EditText confirmPassword=null;
     ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +77,7 @@ public class UserRegister extends AppCompatActivity {
                         progressDialog.dismiss();
                         Log.e( "ER", new String( responseBody ) );
                     } catch (Exception e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                     }
                 }
 

@@ -26,8 +26,8 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class SearchFile extends AppCompatActivity {
@@ -35,7 +35,10 @@ public class SearchFile extends AppCompatActivity {
     Button search;
     AutoCompleteTextView fname;
     List<String> filenames;
-    TextView courseID,fileType,fileURL,detail;
+    TextView courseID;
+    TextView fileType;
+    TextView fileURL;
+    TextView detail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +58,7 @@ public class SearchFile extends AppCompatActivity {
                 Log.e("ER", new String(responseBody));
                 JSONObject jsonObject;
                 try {
-                    filenames = new ArrayList<String>();
+                    filenames = new ArrayList<>();
                     jsonObject = new JSONObject(new String(responseBody));
                     JSONArray jsonArray = jsonObject.getJSONArray("fileslist");
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -63,12 +66,12 @@ public class SearchFile extends AppCompatActivity {
                         filenames.add(jsonobject.getString("fileName"));
                     }
 
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, filenames);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, filenames);
                     fname.setThreshold(1);
                     fname.setAdapter(adapter);
 
                 } catch (JSONException e) {
-                    Log.e(ExceptionString,JSONExceptionString+e );
+                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 }
             }
 
@@ -103,7 +106,7 @@ public class SearchFile extends AppCompatActivity {
                                 fileURL.setText(jsonobject.getString("fileUrl"));
                             }
                         } catch (JSONException e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
                     }
                     @Override

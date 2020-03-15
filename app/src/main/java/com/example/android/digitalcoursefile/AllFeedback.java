@@ -20,9 +20,9 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.FAILEDSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 
 public class AllFeedback extends AppCompatActivity {
     ArrayList<viewfeedback> dataList = new ArrayList();
@@ -62,14 +62,14 @@ public class AllFeedback extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    Log.e(ExceptionString,JSONExceptionString+e );
+                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -23,8 +23,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 
 public class forgotPassword extends AppCompatActivity {
  EditText otp;
@@ -69,7 +69,7 @@ public class forgotPassword extends AppCompatActivity {
 
                             }
                         } catch (JSONException e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
 
                     }

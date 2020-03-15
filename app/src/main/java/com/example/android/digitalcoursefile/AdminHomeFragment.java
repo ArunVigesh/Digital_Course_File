@@ -27,9 +27,9 @@ import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.FAILEDSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 
 
 public class AdminHomeFragment extends Fragment {
@@ -82,14 +82,14 @@ Button submit;
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
-                    Log.e(ExceptionString,JSONExceptionString+e );
+                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 }
 
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getContext(),FailedString,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
             }
         });
         submit.setOnClickListener(new View.OnClickListener() {
@@ -105,14 +105,14 @@ Button submit;
                             announce.getText().clear();
                             Log.e( "ER", new String( responseBody ) );
                         } catch (Exception e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
                     }
 
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        Toast.makeText(getContext(),FailedString,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
                     }
                 });
             }

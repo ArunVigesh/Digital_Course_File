@@ -26,9 +26,9 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
-import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
-import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.EXCEPTIONSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.FAILEDSTR;
+import static com.example.android.digitalcoursefile.ActivityLog.JSONEXCEPTIONSTR;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class ProvideFeedback extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -55,7 +55,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
                 Log.e("ER",new String(responseBody));
                 JSONObject jsonObject;
                 try {
-                    courses=new ArrayList<String>();
+                    courses=new ArrayList<>();
                     courses.add("Select Course");
                     jsonObject = new JSONObject(new  String(responseBody));
                     JSONArray jsonArray = jsonObject.getJSONArray("courselist");
@@ -70,13 +70,13 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
                 }
                 catch (JSONException e) {
-                    Log.e(ExceptionString,JSONExceptionString+e );
+                    Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -97,7 +97,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
                             Toast.makeText(getApplicationContext(),"Feedback Submitted ",Toast.LENGTH_SHORT).show();
 
                         } catch (Exception e) {
-                            Log.e(ExceptionString,JSONExceptionString+e );
+                            Log.e(EXCEPTIONSTR, JSONEXCEPTIONSTR +e );
                         }
                         Intent i =new Intent(ProvideFeedback.this,Dashboard.class);
                         startActivity(i);
@@ -105,7 +105,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -118,6 +118,6 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), FAILEDSTR,Toast.LENGTH_SHORT).show();
     }
 }

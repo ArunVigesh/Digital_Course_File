@@ -19,7 +19,10 @@ public class AllFilesAdapter extends RecyclerView.Adapter<AllFilesAdapter.MyView
     private Context context;
     TextView fileurl;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView courseID,filename,filetype,username;
+        TextView courseID;
+        TextView filename;
+        TextView filetype;
+        TextView username;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

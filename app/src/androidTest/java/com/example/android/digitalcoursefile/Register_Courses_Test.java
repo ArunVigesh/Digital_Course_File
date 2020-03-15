@@ -11,6 +11,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.concurrent.TimeUnit;
+
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -29,7 +31,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.junit.Assert.*;
-
+@RunWith(AndroidJUnit4.class)
 public class Register_Courses_Test {
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule
@@ -41,31 +43,31 @@ public class Register_Courses_Test {
         onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
 
-        Thread.sleep(3000);
+        TimeUnit.MILLISECONDS.sleep(3000);
 
         // Open Drawer to click on navigation.
         onView(withId(R.id.drawer_layout))
                 .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
                 .perform(DrawerActions.open()); // Open Drawer
 
-        Thread.sleep(1500);
+        TimeUnit.MILLISECONDS.sleep(1500);
 
         // Start the screen of your activity.
         onView(withId(R.id.nav_view))
                 .perform(NavigationViewActions.navigateTo(R.id.nav_courses));
 
-        Thread.sleep(1500);
+        TimeUnit.MILLISECONDS.sleep(1500);
 
         onView(withId(R.id.button16)).perform(click());
-        Thread.sleep(3000);
+        TimeUnit.MILLISECONDS.sleep(3000);
 
         onView(withId(R.id.spinner3)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("cse112"))).perform(click());
         onView(withId(R.id.spinner3)).check(matches(withSpinnerText(containsString("cse112"))));
-        Thread.sleep(1500);
+        TimeUnit.MILLISECONDS.sleep(1500);
         onView(withId(R.id.button24)).perform(click());
 
-        Thread.sleep(3000);
+        TimeUnit.MILLISECONDS.sleep(3000);
 
         //onView(withText("Course Registered Wait for Approval... ")).inRoot(withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 

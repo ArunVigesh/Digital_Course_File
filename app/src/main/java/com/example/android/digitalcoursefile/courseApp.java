@@ -2,7 +2,8 @@ package com.example.android.digitalcoursefile;
 
 public class courseApp
 {
-    String username,courseID;
+    String username;
+    String courseID;
     public String getUsername() {
         return username;
     }
