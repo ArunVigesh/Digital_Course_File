@@ -224,7 +224,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
         int serverResponseCode = 0;
 
         HttpURLConnection connection;
-        DataOutputStream dataOutputStream;
+        DataOutputStream dataOutputStream=null;
         String lineEnd = "\r\n";
         String twoHyphens = "--";
         String boundary = "*****";
@@ -294,7 +294,6 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                 }
 
 
-                dataOutputStream.flush();
 
 
 
@@ -314,8 +313,16 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                 Log.e(ExceptionString,JSONExceptionString+e );
                 Toast.makeText(fileUpload.this, "Cannot Read / Write File!", Toast.LENGTH_SHORT).show();
             }
+            finally {
 
-            dialog.dismiss();
+                try { if (fileInputStream != null) fileInputStream.close(); } catch(IOException e) {Log.e(ExceptionString,JSONExceptionString+e );}
+                    try { if (dataOutputStream != null) dataOutputStream.flush(); } catch(IOException ex) {Log.e(ExceptionString,JSONExceptionString+ex );}
+
+                    }
+
+
+
+                    dialog.dismiss();
             return serverResponseCode;
         }
     }

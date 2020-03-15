@@ -21,6 +21,9 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cz.msebera.android.httpclient.Header;
 
 import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     TextView signup;
     Button signin;
-    EditText usernameEditText,password;
+    EditText username,password;
     TextView forgotPass;
     public static String USERNAME;
     public static final String PREFS_NAME = "PrefFile";
@@ -38,19 +41,33 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREF_PASS = "Password";
     private static final String PREF_ISCHECKED = "IsChecked";
     CheckBox remember;
+
+    public static boolean checkUsername(String username) {
+        Pattern VALID_USERNAME_REGEX = Pattern.compile("^(?=.{4,10}$)([a-zA-Z]+)$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_USERNAME_REGEX.matcher(username);
+        return matcher.find();
+    }
+
+    public static boolean checkPassword(String password) {
+        Pattern VALID_PASSWORD_REGEX = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{4,})", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_PASSWORD_REGEX.matcher(password);
+        return matcher.find();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(this);
-        usernameEditText=findViewById(R.id.editText);
+        username=findViewById(R.id.editText);
         forgotPass=findViewById(R.id.textView80);
         password=findViewById(R.id.editText2);
         signup=findViewById(R.id.textView3);
         remember=findViewById(R.id.checkBox);
         SharedPreferences spref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         if(spref.contains(PREF_USERNAME)) {
-            usernameEditText.setText(spref.getString(PREF_USERNAME, ""));
+            username.setText(spref.getString(PREF_USERNAME, ""));
         }
         if(spref.contains((PREF_PASS))) {
             password.setText(spref.getString(PREF_PASS, ""));
@@ -76,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     progressDialog.show();
                     AsyncHttpClient myClient = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
-                    params.add("userName",usernameEditText.getText().toString());
+                    params.add("userName",username.getText().toString());
                     params.add("password",password.getText().toString());
                     myClient.post("https://dcfse.000webhostapp.com/userLogin.php",params,new AsyncHttpResponseHandler() {
 
@@ -97,12 +114,12 @@ public class MainActivity extends AppCompatActivity {
                                 Log.e("ID", "onSuccess: "+USERNAME);
                             }
 
-                            if((usernameEditText.getText().toString().trim().equals("admin") )&& (usernameEditText.getText().toString().trim().equals(USERNAME))) {
+                            if((username.getText().toString().trim().equals("admin") )&& (username.getText().toString().trim().equals(USERNAME))) {
                                 Intent i = new Intent(MainActivity.this, AdminDashboard.class);
                                 startActivity(i);
                                 Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                             }
-                            else if(usernameEditText.getText().toString().trim().equals(USERNAME))
+                            else if(username.getText().toString().trim().equals(USERNAME))
                             {
                                 Intent i=new Intent(MainActivity.this,Dashboard.class);
                                 startActivity(i);
@@ -119,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                             ed=pref.edit();
                             if(remember.isChecked()) {
                                 Boolean boolisChecked=remember.isChecked();
-                                ed.putString(PREF_USERNAME, usernameEditText.getText().toString());
+                                ed.putString(PREF_USERNAME, username.getText().toString());
                                 ed.putString(PREF_PASS, password.getText().toString());
                                 ed.putBoolean(PREF_ISCHECKED, boolisChecked);
                                 ed.apply();

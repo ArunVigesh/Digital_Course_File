@@ -15,6 +15,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cz.msebera.android.httpclient.Header;
 
 import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
@@ -22,6 +25,22 @@ import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionStr
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class UpdatePhone extends AppCompatActivity {
+    public static boolean checkPhone(String phone) {
+        Pattern VALID_PHONE_REGEX = Pattern.compile("^[789]\\d{9}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_PHONE_REGEX.matcher(phone);
+        return matcher.find();
+    }
+
+    public static boolean checkPhoneSame(String phone1, String phone2) {
+        Pattern VALID_PHONE_REGEX = Pattern.compile("^[789]\\d{9}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher1 = VALID_PHONE_REGEX.matcher(phone1);
+        Matcher matcher2 = VALID_PHONE_REGEX.matcher(phone2);
+        if(matcher1.find() && matcher2.find()){
+            if(phone1.contentEquals(phone2)) return true;
+            else return false;
+        }
+        return  false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

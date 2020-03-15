@@ -15,6 +15,9 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cz.msebera.android.httpclient.Header;
 
 import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
@@ -22,6 +25,12 @@ import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionStr
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class EmailUpdate extends AppCompatActivity {
+
+    public static boolean checkEmailForValidity(String email) {
+        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+        return matcher.find();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,4 +86,6 @@ public class EmailUpdate extends AppCompatActivity {
             }
         });
     }
+
+
 }
