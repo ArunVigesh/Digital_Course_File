@@ -19,12 +19,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-    <TextView
+
+            <ImageView
+                android:id="@+id/imageView19"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                app:srcCompat="@drawable/report" />
+
+            <TextView
         android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="File Upload"
+        android:textStyle="bold"
         android:textSize="32sp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -55,6 +65,7 @@
         android:id="@+id/textView15"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:textStyle="bold"
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
         android:textColor="@color/textYellow"
@@ -79,6 +90,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
+        android:textStyle="bold"
         android:textColor="@color/textYellow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,6 +111,7 @@
         android:id="@+id/textView51"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="32dp"

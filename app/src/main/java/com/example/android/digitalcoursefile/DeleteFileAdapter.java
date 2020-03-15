@@ -39,7 +39,7 @@ public class DeleteFileAdapter extends RecyclerView.Adapter<DeleteFileAdapter.My
             courseID=itemView.findViewById(R.id.textView69);
             fileName=itemView.findViewById(R.id.textView68);
             fileType=itemView.findViewById(R.id.textView70);
-            fileUrl=itemView.findViewById(R.id.textView71);
+            fileUrl=itemView.findViewById(R.id.textView72);
             delete=itemView.findViewById(R.id.button39);
 
         }

@@ -29,6 +29,7 @@
         android:layout_marginLeft="32dp"
         android:textColor="@color/textYellow"
         android:gravity="center"
+        android:textStyle="bold"
         android:text="Announcements" />
 
     <androidx.recyclerview.widget.RecyclerView
