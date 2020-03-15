@@ -13,13 +13,13 @@ import java.util.List;
 
 public class LogAdapter extends RecyclerView.Adapter<LogAdapter.MyViewHolder>  {
     private List<log> dataList;
-    private Context context;
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView time,courseID,content;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            context=itemView.getContext();
+
             time=itemView.findViewById(R.id.textView65);
             courseID=itemView.findViewById(R.id.textView66);
             content=itemView.findViewById(R.id.textView67);

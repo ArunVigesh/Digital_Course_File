@@ -27,6 +27,7 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 
 import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
 import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
@@ -75,7 +76,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -104,7 +105,7 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -117,6 +118,6 @@ public class ProvideFeedback extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
     }
 }

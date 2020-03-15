@@ -33,17 +33,17 @@ import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 public class ActivityLog extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private String courseSelected;
 
-    private RecyclerView log;
+    private RecyclerView logAdapter;
     private Spinner spincourse;
     private EditText content;
     private List<String> courses;
     private ArrayList<log> dataList = new ArrayList();
     private LogAdapter mAdapter;
-    public static String UserName="username";
-    public static String Courseid="courseID";
-    public static String FailedString="Failed";
-    public static String ExceptionString="Exception";
-    public static String JSONExceptionString="JSON Exception";
+    public static final String UserName="username";
+    public static final  String Courseid="courseID";
+    public static final String FailedString="Failed";
+    public static final String ExceptionString="Exception";
+    public static final String JSONExceptionString="JSON Exception";
 
 
     @Override
@@ -55,7 +55,7 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
         spincourse.setOnItemSelectedListener(this);
         submit=findViewById(R.id.button35);
         content=findViewById(R.id.editText15);
-        log=findViewById(R.id.activityLog);
+        logAdapter=findViewById(R.id.activityLog);
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add(UserName,USERNAME);
@@ -132,20 +132,20 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonobject = jsonArray.getJSONObject(i);
                         String time=jsonobject.getString("Time");
-                        String log=jsonobject.getString("log");
+                        String logString=jsonobject.getString("log");
                         String courseID=jsonobject.getString(Courseid);
                         log u=new log();
                         u.setTime(time);
-                        u.setContent(log);
+                        u.setContent(logString);
                         u.setCourseID(courseID);
                         dataList.add(u);
                     }
                     mAdapter = new LogAdapter(dataList);
                     LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                     mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                    log.setLayoutManager(mLayoutManager);
-                    log.setAdapter(mAdapter);
-                    log.setItemAnimator(new DefaultItemAnimator());
+                    logAdapter.setLayoutManager(mLayoutManager);
+                    logAdapter.setAdapter(mAdapter);
+                    logAdapter.setItemAnimator(new DefaultItemAnimator());
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {

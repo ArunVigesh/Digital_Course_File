@@ -28,12 +28,12 @@ import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 public class DeleteFile extends AppCompatActivity {
     ArrayList<fileData> dataList = new ArrayList();
     DeleteFileAdapter mAdapter;
-    RecyclerView deletefile;
+    RecyclerView deletefileAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_file);
-        deletefile =findViewById(R.id.deleteFile);
+        deletefileAdapter =findViewById(R.id.deleteFile);
         AsyncHttpClient myClient = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.add("username",USERNAME);
@@ -60,9 +60,9 @@ public class DeleteFile extends AppCompatActivity {
                     }
                     mAdapter = new DeleteFileAdapter(dataList);
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    deletefile.setLayoutManager(mLayoutManager);
-                    deletefile.setItemAnimator(new DefaultItemAnimator());
-                    deletefile.setAdapter(mAdapter);
+                    deletefileAdapter.setLayoutManager(mLayoutManager);
+                    deletefileAdapter.setItemAnimator(new DefaultItemAnimator());
+                    deletefileAdapter.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {

@@ -1,5 +1,6 @@
 package com.example.android.digitalcoursefile;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -8,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +43,7 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 
 import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
+import static com.example.android.digitalcoursefile.ActivityLog.FailedString;
 import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
@@ -110,7 +113,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
             }
         });
         ArrayAdapter<String> adapterFile = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_spinner_item,filetype);
@@ -134,7 +137,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -174,7 +177,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                            Toast.makeText(getApplicationContext(),"Failed",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),FailedString,Toast.LENGTH_SHORT).show();
                         }
 
                     });
@@ -194,6 +197,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
         startActivityForResult(intent, PICK_FILE_REQUEST);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult( requestCode, resultCode, data );
@@ -207,7 +211,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                 Extension=selectedFilePath.substring(selectedFilePath.lastIndexOf('.'));
                 Log.e( TAG, "Selected File Path : " + selectedFilePath );
 
-                if (selectedFilePath != null && !selectedFilePath.equals( "" )) {
+                if (!selectedFilePath.equals( "" )) {
                     Toast.makeText( this, selectedFilePath, Toast.LENGTH_SHORT ).show();
                 } else {
                     Toast.makeText( this, "Unable to Upload File", Toast.LENGTH_SHORT ).show();
@@ -230,10 +234,6 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
         byte[] buffer;
         int maxBufferSize = 1 * 1024 * 1024;
         File selectedFile = new File(selectedFilePath);
-
-
-        String[] parts = selectedFilePath.split("/");
-        final String fileName = parts[parts.length - 1];
 
         if (!selectedFile.isFile()) {
             dialog.dismiss();
@@ -295,7 +295,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
 
 
                 dataOutputStream.flush();
-                //dataOutputStream.close();
+
 
 
             } catch (FileNotFoundException e) {
@@ -314,13 +314,7 @@ public class fileUpload extends AppCompatActivity implements AdapterView.OnItemS
                 Log.e(ExceptionString,JSONExceptionString+e );
                 Toast.makeText(fileUpload.this, "Cannot Read / Write File!", Toast.LENGTH_SHORT).show();
             }
-            /*finally {
-                try {
-                    //fileInputStream.close();
-                } catch (Exception e) {
-                    Log.e("Exception","JSON Exception"+e );
-                }
-            }*/
+
             dialog.dismiss();
             return serverResponseCode;
         }

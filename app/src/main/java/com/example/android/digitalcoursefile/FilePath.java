@@ -12,6 +12,8 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 
 public class FilePath {
 
@@ -22,15 +24,15 @@ public class FilePath {
      * @param uri
      * @return path of the selected image file from gallery
      */
-    // @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static String getPath(final Context context, final Uri uri) {
 
         // check here to KITKAT or new version
         // final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
         // DocumentProvider
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (DocumentsContract.isDocumentUri(context, uri)) {
+        if( DocumentsContract.isDocumentUri(context, uri)) {
 
                 // ExternalStorageProvider
                 if (isExternalStorageDocument(uri)) {
@@ -100,7 +102,7 @@ public class FilePath {
                     return uri.getPath();
                 }
             }
-        }
+
 
             return null;
 

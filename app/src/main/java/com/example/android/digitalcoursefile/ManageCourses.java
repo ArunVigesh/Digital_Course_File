@@ -79,11 +79,11 @@ public class ManageCourses extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("courselist");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonobject = jsonArray.getJSONObject(i);
-                        String courseName=jsonobject.getString("courseName");
+                        String courseNameString=jsonobject.getString("courseName");
                         String courseID=jsonobject.getString("courseID");
                         course f=new course();
                         f.setCourseID(courseID);
-                        f.setCourseName(courseName);
+                        f.setCourseName(courseNameString);
                         dataList.add(f);
                     }
                     mAdapter = new removeCourseAdapter(dataList);
