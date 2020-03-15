@@ -27,8 +27,10 @@ import static com.example.android.digitalcoursefile.ActivityLog.ExceptionString;
 import static com.example.android.digitalcoursefile.ActivityLog.JSONExceptionString;
 
 public class forgotPassword extends AppCompatActivity {
- EditText otp,username;
- Button reqOTP,submit;
+ EditText otp;
+ EditText username;
+ Button reqOTP;
+ Button submit;
     int randomNum;
     String phoneNo;
     @Override

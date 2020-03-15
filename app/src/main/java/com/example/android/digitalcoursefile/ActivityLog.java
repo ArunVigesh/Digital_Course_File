@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +32,7 @@ import static com.example.android.digitalcoursefile.MainActivity.USERNAME;
 
 public class ActivityLog extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private String courseSelected;
-    private Button submit;
+
     private RecyclerView log;
     private Spinner spincourse;
     private EditText content;
@@ -49,6 +48,7 @@ public class ActivityLog extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button submit;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
         spincourse=findViewById(R.id.spinner5);

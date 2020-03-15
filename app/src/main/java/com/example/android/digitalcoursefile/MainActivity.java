@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     TextView signup;
     Button signin;
-    EditText username,password;
+    EditText usernameEditText,password;
     TextView forgotPass;
     public static String USERNAME;
     public static final String PREFS_NAME = "PrefFile";
@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         progressDialog = new ProgressDialog(this);
-        username=findViewById(R.id.editText);
+        usernameEditText=findViewById(R.id.editText);
         forgotPass=findViewById(R.id.textView80);
         password=findViewById(R.id.editText2);
         signup=findViewById(R.id.textView3);
         remember=findViewById(R.id.checkBox);
         SharedPreferences spref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         if(spref.contains(PREF_USERNAME)) {
-            username.setText(spref.getString(PREF_USERNAME, ""));
+            usernameEditText.setText(spref.getString(PREF_USERNAME, ""));
         }
         if(spref.contains((PREF_PASS))) {
             password.setText(spref.getString(PREF_PASS, ""));
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     progressDialog.show();
                     AsyncHttpClient myClient = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
-                    params.add("userName",username.getText().toString());
+                    params.add("userName",usernameEditText.getText().toString());
                     params.add("password",password.getText().toString());
                     myClient.post("https://dcfse.000webhostapp.com/userLogin.php",params,new AsyncHttpResponseHandler() {
 
@@ -97,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
                                 Log.e("ID", "onSuccess: "+USERNAME);
                             }
 
-                            if((username.getText().toString().trim().equals("admin") )&& (username.getText().toString().trim().equals(USERNAME))) {
+                            if((usernameEditText.getText().toString().trim().equals("admin") )&& (usernameEditText.getText().toString().trim().equals(USERNAME))) {
                                 Intent i = new Intent(MainActivity.this, AdminDashboard.class);
                                 startActivity(i);
                                 Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                             }
-                            else if(username.getText().toString().trim().equals(USERNAME))
+                            else if(usernameEditText.getText().toString().trim().equals(USERNAME))
                             {
                                 Intent i=new Intent(MainActivity.this,Dashboard.class);
                                 startActivity(i);
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                             ed=pref.edit();
                             if(remember.isChecked()) {
                                 Boolean boolisChecked=remember.isChecked();
-                                ed.putString(PREF_USERNAME, username.getText().toString());
+                                ed.putString(PREF_USERNAME, usernameEditText.getText().toString());
                                 ed.putString(PREF_PASS, password.getText().toString());
                                 ed.putBoolean(PREF_ISCHECKED, boolisChecked);
                                 ed.apply();
