@@ -34,8 +34,8 @@ public class ActivityLog_Test {
 
     @Test
     public void clickOnYourNavigationItem_Files() throws InterruptedException {
-        onView(withId(R.id.editText)).perform(typeText("test"));
-        onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText)).perform(typeText("Vijay"));
+        onView(withId(R.id.editText2)).perform(typeText("Sai18"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
         //onView(withText("Login Successful")).inRoot(withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
 
@@ -55,8 +55,8 @@ public class ActivityLog_Test {
         onView(withId(R.id.button34)).perform(click());
         TimeUnit.MILLISECONDS.sleep(1500);
         onView(withId(R.id.spinner5)).perform(click());
-        onData(allOf(is(instanceOf(String.class)), is("cse111"))).perform(click());
-        onView(withId(R.id.spinner5)).check(matches(withSpinnerText(containsString("cse111"))));
+        onData(allOf(is(instanceOf(String.class)), is("15CSE311"))).perform(click());
+        onView(withId(R.id.spinner5)).check(matches(withSpinnerText(containsString("15CSE311"))));
         TimeUnit.MILLISECONDS.sleep(1500);        onView(withId(R.id.editText15)).perform(typeText("Pretty good!"), closeSoftKeyboard());
         TimeUnit.MILLISECONDS.sleep(1500);        onView(withId(R.id.button35)).perform(click());
         TimeUnit.MILLISECONDS.sleep(1000);    }

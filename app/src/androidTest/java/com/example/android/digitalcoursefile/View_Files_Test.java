@@ -28,8 +28,8 @@ public class View_Files_Test {
 
     @Test
     public void clickOnYourNavigationItem_Files() throws InterruptedException {
-        onView(withId(R.id.editText)).perform(typeText("test"));
-        onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText)).perform(typeText("Vijay"));
+        onView(withId(R.id.editText2)).perform(typeText("Sai18"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
 
         TimeUnit.MILLISECONDS.sleep(3000);

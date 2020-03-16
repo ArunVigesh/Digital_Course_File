@@ -33,8 +33,8 @@ public class Invalid_Password_Update_Test {
 
     @Test
     public void clickOnYourNavigationItem_Files() throws InterruptedException {
-        onView(withId(R.id.editText)).perform(typeText("test"));
-        onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText)).perform(typeText("Vijay"));
+        onView(withId(R.id.editText2)).perform(typeText("Sai18"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
 
         TimeUnit.MILLISECONDS.sleep(3000);
@@ -56,6 +56,6 @@ public class Invalid_Password_Update_Test {
         TimeUnit.MILLISECONDS.sleep(500);
         onView(withId(R.id.button26)).perform(click());
         TimeUnit.MILLISECONDS.sleep(500);
-        onView(withText("Email IDs Don't Match")).inRoot(withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
+        onView(withText("Password Don't Match")).inRoot(withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 }

@@ -39,8 +39,8 @@ public class Register_Courses_Test {
 
     @Test
     public void clickOnYourNavigationItem_Files() throws InterruptedException {
-        onView(withId(R.id.editText)).perform(typeText("test"));
-        onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText)).perform(typeText("Vijay"));
+        onView(withId(R.id.editText2)).perform(typeText("Sai18"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
 
         TimeUnit.MILLISECONDS.sleep(3000);
@@ -62,8 +62,8 @@ public class Register_Courses_Test {
         TimeUnit.MILLISECONDS.sleep(3000);
 
         onView(withId(R.id.spinner3)).perform(click());
-        onData(allOf(is(instanceOf(String.class)), is("cse112"))).perform(click());
-        onView(withId(R.id.spinner3)).check(matches(withSpinnerText(containsString("cse112"))));
+        onData(allOf(is(instanceOf(String.class)), is("15CSE311"))).perform(click());
+        onView(withId(R.id.spinner3)).check(matches(withSpinnerText(containsString("15CSE311"))));
         TimeUnit.MILLISECONDS.sleep(1500);
         onView(withId(R.id.button24)).perform(click());
 

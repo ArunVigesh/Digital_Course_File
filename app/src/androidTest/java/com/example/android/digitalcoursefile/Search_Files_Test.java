@@ -33,8 +33,8 @@ public class Search_Files_Test {
 
     @Test
     public void clickOnYourNavigationItem_Files() throws InterruptedException {
-        onView(withId(R.id.editText)).perform(typeText("test"));
-        onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText)).perform(typeText("Vijay"));
+        onView(withId(R.id.editText2)).perform(typeText("Sai18"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
 
         TimeUnit.MILLISECONDS.sleep(1500);
@@ -56,10 +56,10 @@ public class Search_Files_Test {
         TimeUnit.MILLISECONDS.sleep(1500);
 
         // Type "yuvar" to trigger suggestions.
-        onView(withId(R.id.autoCompleteTextView)).perform(typeText("yuvar"), closeSoftKeyboard());
+        onView(withId(R.id.autoCompleteTextView)).perform(typeText("AH"), closeSoftKeyboard());
 
         // Check that both suggestions are displayed.
-        onData(equalTo("yuvaraj1")).inRoot(RootMatchers.withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).perform(click());
+        onData(equalTo("AHS")).inRoot(RootMatchers.withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).perform(click());
 
         onView(withId(R.id.button40)).perform(click());
         TimeUnit.MILLISECONDS.sleep(8000);

@@ -33,8 +33,8 @@ public class Update_Password_Test {
 
     @Test
     public void clickOnYourNavigationItem_Files() throws InterruptedException {
-        onView(withId(R.id.editText)).perform(typeText("test"));
-        onView(withId(R.id.editText2)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText)).perform(typeText("Vijay"));
+        onView(withId(R.id.editText2)).perform(typeText("Sai18"), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
 
         TimeUnit.MILLISECONDS.sleep(3000);
@@ -55,8 +55,8 @@ public class Update_Password_Test {
         onView(withId(R.id.button8)).perform(click());
         TimeUnit.MILLISECONDS.sleep(1500);
 
-        onView(withId(R.id.editText13)).perform(typeText("123456"));
-        onView(withId(R.id.editText14)).perform(typeText("123456"), closeSoftKeyboard());
+        onView(withId(R.id.editText13)).perform(typeText("Sai118"));
+        onView(withId(R.id.editText14)).perform(typeText("Sai118"), closeSoftKeyboard());
         TimeUnit.MILLISECONDS.sleep(500);
         onView(withId(R.id.button26)).perform(click());
         TimeUnit.MILLISECONDS.sleep(500);
